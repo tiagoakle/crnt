@@ -1,0 +1,34 @@
+These files produce the plots in the paper titled
+Existence of positive steady states for mass-conserving
+and mass-action weakly reversible chemical reaction
+networks with a single linkage class.
+
+The scripts contained are:
+infeas_plot_os.m plots the mass action infeasibility for the iterations of the solver 
+                 for an open system with one likage class 
+infeas_plot_om.m plots the mass action infeasibility for the iterations of the solver
+                 for an open system with two linkage classes
+infeas_plot_cs.m plots the mass action infeasibility for the iterations of the solver 
+                 for a closed syste with one likage class 
+infeas_plot_cm.m plots the mass action infeasibility for the iterations of the solver
+                 for a closed system with two linkage classes
+
+./avg_iterations_for_nw_size_multiple.m Generates a file in ../Results/NetworkSizeVsItCountSingleLink.mat that
+                                can be used to plot the average iteration count over different network sizes for 
+                                networks with two linkage classes.
+./avg_iterations_for_nw_size_single.m Generates a file in ../Results/NetworkSizeVsItCountSingleLink.mat that 
+                                can be used to plot the average iteration count over different network sizes for 
+                                networks with one linkage class.
+./plot_avg_iterations_vs_nw_size.m Uses the two files in ./Results to plot the averate iteration count vs netowrk size.
+./Generator/AkGenerator.m Generates a weakly reversible reacion network with a prescribed number
+                          of complexes and linkage classes.
+./Generator/YGenerator.m  Generates a stoichiometry matrix
+./Generator/GrTheory/*    Used by AkGenerator to count the number of linkage classes in a 
+                          sampled network.
+./CRNTSolvers/FpIterationPDCO.m Solves 
+./CRNTSolvers/SolverFpIterationHomPDCO.m
+./CRNTSolvers/SolverFpIterationInhomPDCO.m
+./PDCO/pdco.m Michael Saunders's primal dual constrained optimization software
+./PDCO/pdcoSet.m supporting file for PDCO
+./PDCO/phiP.m Objective function used by PDCO in our formulation of the fixed point algorithm
+

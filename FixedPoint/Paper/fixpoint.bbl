@@ -1,0 +1,60 @@
+\begin{thebibliography}{11}
+\providecommand{\url}[1]{{#1}}
+\providecommand{\urlprefix}{URL }
+\expandafter\ifx\csname urlstyle\endcsname\relax
+  \providecommand{\doi}[1]{DOI~\discretionary{}{}{}#1}\else
+  \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
+  \urlstyle{rm}\Url}\fi
+
+\bibitem{Anderson-GAC}
+Anderson, D.F.: A proof of the global attractor conjecture in the single
+  linkage class case (2011).
+\newblock ArXiv:1101.0761v3
+
+\bibitem{Deng}
+Deng, J., Feinberg, M., Jones, C., Nachman, A.: On the steady states of weakly
+  reversible chemical reaction networks.
+\newblock (submitted)  (2008)
+
+\bibitem{deficiency0}
+Feinberg, M.: Chemical reaction network structure and the stability of complex
+  isothermal reactors {I. The} deficiency zero and deficiency one theorems.
+\newblock Chem. Eng. Sci. \textbf{42}(10), 2229--68 (1987)
+
+\bibitem{deficiency1}
+Feinberg, M.: Chemical reaction network structure and the stability of complex
+  isothermal reactors {II. Multiple} steady states for networks of deficiency
+  one.
+\newblock Chem. Eng. Sci. \textbf{43}(1), 1--25 (1988)
+
+\bibitem{fleming-opt}
+Fleming, R.M.T., Maes, C.M., Saunders, M.A., Ye, Y., Palsson, B.{\O}.: A
+  variational principle for computing nonequilibrium fluxes and potentials in
+  genome-scale biochemical networks.
+\newblock Journal of Theoretical Biology \textbf{292}, 71--77 (2012).
+\newblock \urlprefix\url{http://dx.doi.org/10.1016/j.jtbi.2011.09.029}
+
+\bibitem{gunawardena}
+Gunawardena, J.: Chemical Reaction Network Theory for In-silico Biologists.
+\newblock Bauer Center For Genomics Research, Harvard University, Cambridge, MA
+  (2003)
+
+\bibitem{necc-suff-CB}
+Horn, F.: Necessary and sufficient conditions for complex balancing in chemical
+  kinetics.
+\newblock Arch. Rational Mech. Anal. \textbf{49}, 172--186 (1972)
+
+\bibitem{uniqueEPandLyapunov}
+Horn, F., Feinberg, M.: Dynamics of open chemical systems and the algebraic
+  structure of the underlying reaction network.
+\newblock Chem. Eng. Sci. \textbf{29}, 775--787 (1974)
+
+\bibitem{GMAK}
+Horn, F., Jackson, R.: General mass action kinetics.
+\newblock Archives of Rational Mech. Anal. \textbf{47}, 81--116 (1972)
+
+\bibitem{pdco}
+Saunders, M.A.: Primal-dual interior method for convex objectives (2011).
+\newblock Http://www.stanford.edu/group/SOL/software/pdco.html
+
+\end{thebibliography}

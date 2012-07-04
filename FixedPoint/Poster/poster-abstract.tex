@@ -1,0 +1,132 @@
+\documentclass[11pt]{article} 
+\usepackage{amsmath,amsthm,amstext,amssymb,amsfonts,amscd,graphicx,bbm,fullpage,url} 
+
+%\voffset -0.5in
+%\addtolength{\textheight}{1in} 
+
+\textheight     8.75in
+\textwidth      5.5in
+\oddsidemargin  0.5in
+%\topmargin     -0.25in
+\nofiles
+%\parskip 4pt
+
+
+% new theorems
+\newtheorem{lem}{Lemma} 
+\newtheorem{lemma}{Lemma}
+\newtheorem{thm}{Theorem} 
+\newtheorem{ass}{Assumption} 
+\newtheorem{cor}{Corollary} 
+\newtheorem{clm}{Claim}
+\newtheorem{prop}{Proposition} 
+\newtheorem{con}{Conjecture} 
+\newtheorem{wff}{Wff} 
+\newtheorem{defn}{Definition} 
+\newtheorem{axiom}{Axiom} 
+\newcounter{rulenum} 
+\newcounter{sent} 
+\newcounter{tempcnt} 
+
+% macros
+\newcommand*{\add}{\mbox{\bf add}} 
+\newcommand*{\open}{\mbox{\bf open}} 
+\newcommand*{\close}{\mbox{\bf close}} 
+\newcommand*{\ex}{\mbox{\rm E}} 
+\newcommand*{\pr}{\mbox{\rm Pr}} 
+\newcommand*{\range}{\mbox{\rm range}} 
+\newcommand*{\rank}{\mbox{\rm rank}} 
+\newcommand*{\sgn}{\mbox{\rm sign}} 
+\newcommand*{\var}{\mbox{\rm Var}} 
+\newcommand*{\diag}{\mbox{\rm diag}} 
+\newcommand*{\epi}{\epsilon} 
+\newcommand*{\QED}{\ \hfill\rule[-2pt]{6pt}{12pt} \medskip}
+\newcommand*{\supp}{\mbox{\rm supp}} 
+
+\newcommand*{\grad}{\nabla}
+\newcommand*{\half}{\frac{1}{2}}
+\newcommand*{\inv}{^{-1}}
+\newcommand*{\0}{\mathbf{0}}
+\newcommand*{\1}{\mathbf{1}}
+\newcommand*{\E}{\ensuremath{\operatorname{E}}}
+\newcommand*{\maximize}{\text{maximize}}
+\newcommand*{\minimize}{\text{minimize}}
+\newcommand*{\st}{\text{subject to}}
+\newcommand*{\R}{\mathbbm{R}}
+\newcommand*{\matlab}{{\sc Matlab}}
+
+\newcommand{\abs}[1]{\left\vert #1 \right\vert}
+\newcommand{\bigo}[1]{\mathcal{O} \left( #1 \right)}
+\newcommand{\cov}[2]{\ensuremath{\operatorname{Cov}\left( #1, #2\right)}}
+\newcommand{\Ex}[2][]{\ensuremath{\E_{#1} \left[ #2 \right]}}
+\newcommand{\norm}[1]{\left\lVert\,#1\,\right\rVert}
+\newcommand{\bmat}[1]{\begin{bmatrix}#1\end{bmatrix}}
+\newcommand{\pmat}[1]{\begin{pmatrix}#1\end{pmatrix}}
+\newcommand{\smallmat}[1]{\left (\begin{smallmatrix}#1\end{smallmatrix} \right)}
+\newcommand{\vb}[1]{\mathbf{#1}}
+
+\renewcommand{\P}{\ensuremath{\operatorname{P}}}
+\renewcommand{\Pr}[2][]{\ensuremath{\P_{#1} \left \{ #2 \right \}}}
+
+
+\date{}
+\thispagestyle{empty}
+
+\begin{document}
+
+
+\subsection*{Program title}
+
+Numerical Optimization Algorithms and Software for Systems Biology
+
+
+\subsection*{Poster title}
+
+Existence of Positive Equilibria for Mass Conserving and Mass-Action
+Biochemical Reaction Networks with a Single-Terminal-Linkage Class
+
+
+\subsection*{Authors and affiliations}
+
+Santiago Akle,$^*$\footnote{Institute for Computational and Mathematical Engineering,
+           Stanford University, Stanford, CA.
+           Research supported in part by DOE Grant DE-SC0002009.
+           \url{akle@stanford.edu}, \url{ntaheri@stanford.edu}, \url{onkar@stanford.edu}.}
+Onkar Dalal,\footnotemark[1]
+Ronan Fleming,\footnote{Science Institute \& Center for Systems
+           Biology, University of Iceland, Reykjavik.
+           \url{ronan.mt.fleming@gmail.com}.}
+{\bf Michael Saunders},\footnotemark[3]
+Nicole Taheri,\footnotemark[1]
+{\bf Yinyu Ye}\footnote{Department of Management Science and Engineering,
+           Stanford University, Stanford, CA.
+           Research supported in part by NSF Grant GOALI 0800151 and DOE Grant DE-SC0002009.
+           \url{saunders@stanford.edu}, \url{yinyu-ye@stanford.edu}.}
+        
+      
+\subsection*{Abstract}
+
+A steady state of a chemical reaction network is a set of chemical
+concentrations that remain constant for the induced reaction rates.
+In this work we assume the \emph{law of mass-action} governs the rate
+of the reactions, i.e.\ the rate of a reaction is proportional to the
+concentrations of the participating species. More specifically, if
+$Y_{ij}$ is the stoichiometric coefficient for species $i$ in reaction
+$j$, $k_{j}$ is the thermodynamically feasible rate constant for
+reaction $j$, and $c_i$ is the concentration of species $i$, then the
+rate of reaction $j$ is
+\[v_j = k_j\prod_ic_i^{Y_{ij}}.\]
+
+Assuming the reactions are \emph{mass conserving}, and that the
+directed graph corresponding to the set of reactions forms a strongly
+connected component, we show that, regardless of the rate constants,
+there exists at least one steady state where all concentrations are
+positive.
+
+We also establish the parallel between steady states and a fixed point
+of a mapping that arises from solving a strictly convex optimization
+problem, which allows us to find such steady states in randomly
+constructed networks.
+
+\end{document}
+
