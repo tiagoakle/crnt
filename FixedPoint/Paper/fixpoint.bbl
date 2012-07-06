@@ -32,7 +32,7 @@ Fleming, R.M.T., Maes, C.M., Saunders, M.A., Ye, Y., Palsson, B.{\O}.: A
   variational principle for computing nonequilibrium fluxes and potentials in
   genome-scale biochemical networks.
 \newblock Journal of Theoretical Biology \textbf{292}, 71--77 (2012).
-\newblock \urlprefix\url{http://dx.doi.org/10.1016/j.jtbi.2011.09.029}
+\newblock \url{http://dx.doi.org/10.1016/j.jtbi.2011.09.029}
 
 \bibitem{gunawardena}
 Gunawardena, J.: Chemical Reaction Network Theory for In-silico Biologists.
@@ -55,6 +55,6 @@ Horn, F., Jackson, R.: General mass action kinetics.
 
 \bibitem{pdco}
 Saunders, M.A.: Primal-dual interior method for convex objectives (2011).
-\newblock Http://www.stanford.edu/group/SOL/software/pdco.html
+\newblock\url{http://www.stanford.edu/group/SOL/software/pdco.html}
 
 \end{thebibliography}
