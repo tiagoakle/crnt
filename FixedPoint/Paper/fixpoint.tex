@@ -216,8 +216,8 @@ $A_{ij}=k_{i\rightarrow j}$.  Define $D := \diag(A\1)$, where $\1$ is the
 vector of all ones, and $K := A^T-D$.  The elements of this new matrix will
 be $(K)_{ij} = k_{j \rightarrow i}$ for $i \neq j$, and $(K)_{ii} = -\sum_j
 k_{j \rightarrow i}$, so that $K^T \1 = \0$.  We assume that each complex
-is used in a reaction hence $A$ will have no empty rows and $D$ will 
-be a positive diagonal matrix.
+is used in a reaction. Hence $A$ will have no empty rows and $D$ will 
+be a positive-definite diagonal matrix.
 
 Let $c \in \R^m$ be the vector of concentrations of each species, and $b \in
 \R^m$ the vector of species' exchange rates across the network boundary.
@@ -229,9 +229,9 @@ Let $c \in \R^m$ be the vector of concentrations of each species, and $b \in
 We define $\psi(c):\R^m_+\rightarrow \R^n$ to be a nonlinear function that
 captures mass-action kinetics:
 \[
-\psi_j(c) = \prod_i\,c_i^{Y_{ij}}.
+\psi_j(c) = \prod_i\,c_i^{Y_{ij}},
 \]
-Where $Y_ij$ is the stoichiometric coefficient of species $i$ in complex $j$.
+where $Y_{ij}$ is the stoichiometric coefficient of species $i$ in complex $j$.
 The change in concentration over time can be described by the system of
 ordinary differential equations 
 \[
@@ -394,7 +394,7 @@ a single linkage class will admit a positive solution pair $(c,v)$ that satisfie
 
 We construct a linearly constrained convex optimization
 problem such that the logarithmic form of the mass-action equation
-\eqref{mak-alt} is an optimality condition so that any solution to this
+\eqref{mak-alt} is an optimality condition, so that any solution to this
 optimization problem will also satisfy \eqref{mak-alt}.
 
 We use the existence and uniqueness of the solution of the convex problem 
@@ -421,17 +421,17 @@ the parametric convex optimization problem
 has a positive solution $(v^\star(\mu),v_0^\star(\mu))$, then the optimality
 conditions
 \begin{subequations}
+    \label{opt-cond}
 	\begin{align}
       YDv^\star(\mu)  + YA^T\eta^+ v^\star_0  &= YA^Tr + YD\eta^-r_0  \label{opt-primal-feas}\\
       DY^T y^\star(\mu) &= D\log(v^\star(\mu))                        \label{opt-dual-feas}\\
       (YA^T\eta^+)^Ty^\star(\mu)   &= \log(v^\star_0(\mu))            \label{opt-dual-feas-two}\\
     (v^\star(\mu),v_0^\star(\mu)) &\ge 0                              \label{opt-primal-bounds}
 	\end{align}
-    \label{opt-cond}
 \end{subequations}
-are well defined. Since $D$ is nonsingular \eqref{opt-dual-feas} is
-equivalent to \eqref{mak-alt}, for $c^\star(\mu) := e^{y^\star(\mu)}$, where
-the exponent is taken element-wise.  Hence, the equation \eqref{mak-alt} holds
+are well defined. Since $D$ is nonsingular, \eqref{opt-dual-feas} is
+equivalent to \eqref{mak-alt} with $c^\star(\mu) := e^{y^\star(\mu)}$, where
+the exponential is evaluated element-wise.  Hence, equation \eqref{mak-alt} holds
 and $c^\star(\mu)$ satisfies mass-action. Note that 
 \eqref{convex-fix} is strictly convex, so for any feasible $\mu:=(r,r_0)$ there is 
 a unique minimizer. That is, the mapping 
@@ -485,7 +485,7 @@ dependence on $\mu$.
 	\Omega = \left\{ (v,v_0)\in	\Re^{n+1} \; : \; (v,v_0)\geq 0, 
 		\quad e^TYDv + e^TYA^T\eta^+v_0 = \gamma\right\},
 	\]  
-	where $e$ is defined in \eqref{consis}.  By Brouwer's fixed point
+	where $e$ is defined in \eqref{consis}.  By Brouwer's fixed-point
 	theorem, if the parameter $(r,r_0) \in \Omega$ ensures that the corresponding 
     optimal solution $(v^\star,v_0^\star) \in \Omega$, then there is a fixed point 
     such that the parameter and solution are equal, i.e., there exists a $\mu$ 
@@ -519,7 +519,7 @@ consumption of each chemical species and $YA^Tv^\star+YD\eta^-v^\star_0$ is the
 rate of production of each chemical species. At the fixed point, the equality
 $YDv^\star + YA^T\eta^+v^\star_0= YA^Tv^\star+YD\eta^-v^\star_0$ defines a
 steady state. The set $\Omega$ defines the parameter $\gamma=e^T(YDv^\star +
-YA^T\eta^+v^\star_0)$, since the vector $e$ can be interpreted as an assignment
+YA^T\eta^+v^\star_0)$, and since the vector $e$ can be interpreted as an assignment
 of relative mass to the species, $\gamma$ can be interpreted as the total
 amount of mass that reacts per unit time at the steady state.  Therefore,
 looking for fixed points in $\Omega$ corresponds to looking for steady states
@@ -542,7 +542,7 @@ linkage class and show that if $\hat \mu$ is a fixed point of the
 mapping \eqref{mapping}, the minimizer $(v^\star(\hat
 \mu),v^\star_0(\hat\mu))$, and therefore $\hat\mu$, is positive.
 
-Lemma $\ref{maximum-support}$ bellow shows that if problem $\eqref{convex-fix}$ has a
+Lemma $\ref{maximum-support}$ below shows that if problem $\eqref{convex-fix}$ has a
 feasible point with support $J$, the minimizer $(v^\star,v^\star_0)$ will have
 support at least $J$. Lemma \ref{positive-feasible} uses the single
 linkage class hypothesis to show that at a fixed point, there is a
@@ -760,7 +760,7 @@ boundary.
 
 \subsection{Numerical method for finding fixed points}
 
-Given an initial positive point $(\hat v \hat v_0) \in \R^{n+1}$ and a small
+Given an initial positive point $(\hat v, \hat v_0) \in \R^{n+1}$ and a small
 tolerance $\tau$, we use the following fixed point iteration,
 Algorithm~\ref{fp-iteration}, to find a parameter $\mu = (r, r_0)$ to
 the problem \eqref{convex-fix} such that $(v^\star,v_0^\star) =
@@ -792,12 +792,12 @@ all $k = 1, 2, 3, \dots$,
 \[
 	\|Y^Ty^\star-\log(v^\star(\mu_k))\|_\infty \leq \epsilon,
 \] 
-for some small value of $\epsilon$, where $\lambda^\star$ is the Lagrange
+for some small value of $\epsilon$, where $y^\star$ is the Lagrange
 multiplier of the linear equality constraint at the solution that corresponds
 to the logarithm of the concentrations. Thus, if the iteration
-converges to a fixed point $(r,r_0) = (v^\star,v_0^\star)$ then
-\eqref{mak} will be satisfied to a precision $\epsilon$ and \eqref{fb}
-will be satisfied to a precision $\tau$.
+converges to a fixed point $(r,r_0) = (v^\star,v_0^\star)$, then
+\eqref{mak} will be satisfied to precision $\epsilon$ and \eqref{fb}
+to precision $\tau$.
 
 Algorithm~\ref{fp-iteration} has been tested extensively on randomly generated
 networks with noteworthy success. The results of our experiments are shown in
@@ -868,7 +868,7 @@ $\hat E$ a weight of an independent and uniformly distributed value in the
 range $(0,10]$.  These edge weights represent the reaction rates between
 complexes.
 
-To generate the stoichiometry, we define a parameter $r$ as the maximum 
+To generate the stoichiometry, we define a parameter $q_{\max}$ as the maximum 
 number of species in each complex. Each complex is constructed with a random
 sample of $q$ species, where $q$ is a random integer in $[1,q_{\max}]$.  All samples
 are drawn uniformly and independently.  Finally, we assign the multiplicity of
@@ -897,7 +897,7 @@ closed networks that are weakly reversible.
    \centering 
    \includegraphics[width=0.8\textwidth]{InfeasibilityVsIteration}
    \caption{Typical infeasibility of \eqref{fb} vs.\ Iteration for network with a
-            single terminal-linkage class ($b=0$)} 
+            single linkage class ($b=0$)} 
    \label{fig:typical-infeas-single} 
 \end{figure}
 
@@ -912,7 +912,7 @@ closed networks that are weakly reversible.
 Figure~\ref{fig:typical-infeas-single} displays the sequence of the
 infeasibilities $\|YKv_k\|_\infty$ at each iteration $k$ in
 Algorithm~\ref{fp-iteration}, for a network with a single
-terminal-linkage class, $50$ species and $500$ complexes, where at
+linkage class, $50$ species and $500$ complexes, where at
 most $10$ species participate in each
 complex. Figure~\ref{fig:typical-infeas-multiple} displays the
 analogous sequence for a network of equal size and two
@@ -942,14 +942,14 @@ the sequence of the infeasibilities $\|YK\eta_k-b\eta_0\|_\infty$
 at each iteration $k$, for the single linkage network with material 
 exchange across its boundary. Figure~\ref{fig:typical-infeas-multiple-open} 
 displays the analogous sequence for the multiple linkage network with material
-exchange across its boundary. Notably, the linear
+exchange across its boundary. Notably, the linear convergence rate
 is preserved.
 
 \begin{figure}%[!htbp]   %%% 6
    \centering
    \includegraphics[width=0.78\textwidth]{SingleNetAvgIterationsVsNetSize} 
    \caption{Average number of iterations for single linkage class
-            networks}
+            networks ($b=0$)}
    \label{fig:iteration-count-simple} 
 \end{figure}
 
@@ -957,7 +957,7 @@ is preserved.
    \centering
    \includegraphics[width=0.78\textwidth]{MultipleNetAvgIterationsVsNetSize} 
    \caption{Average number of iterations for networks with two linkage
-            classes}
+            classes ($b=0$)}
    \label{fig:iteration-count-multiple} 
 \end{figure}
 
