@@ -169,14 +169,13 @@ methods to open systems where species are exchanged across the boundary at certa
 How best to compute such steady states remains uncertain; however, we suggest a fixed
 point algorithm and provide results of our numerical experiments for several cases. 
 
-We draw from the work of Flemming et al. \cire{fleming-opt}
-where the authors address case of ensembles of reversible reactions. They show that 
-for such networks there exist chemical potentials which induce fluxes that 
-are both thermodynamically feasible and mass conserving. And propose
-an algorithm to calculate them. From that work we draw inspiration for using a 
-linearly constrained convex optimization formulation which 
-we extend to the case of weakly reversible networks. 
-
+We build from the work of Flemming et al. \cite{fleming-opt} where the authors
+address the case of ensembles of reversible reactions and propose to find
+thermodynamically feasible mass-conserving fluxes via solving a linearly 
+constrained convex optimization problem. In this work we generalize their 
+work to weakly reversible networks, and propose an alternative version 
+of the algorithm to tackle this case.
+ 
 We wish to highlight the differences between our work and that of Deng et al.\ 
 \cite{Deng}. Their work proves the existence of positive steady states for 
 weakly reversible networks regardless of the number of connected components.

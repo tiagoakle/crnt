@@ -22,6 +22,13 @@ Feinberg, M.: Chemical reaction network structure and the stability of complex
   one.
 \newblock Chem. Eng. Sci. \textbf{43}(1), 1--25 (1988)
 
+\bibitem{fleming-opt}
+Fleming, R.M.T., Maes, C.M., Saunders, M.A., Ye, Y., Palsson, B.{\O}.: A
+  variational principle for computing nonequilibrium fluxes and potentials in
+  genome-scale biochemical networks.
+\newblock Journal of Theoretical Biology \textbf{292}, 71--77 (2012).
+\newblock \urlprefix\url{http://dx.doi.org/10.1016/j.jtbi.2011.09.029}
+
 \bibitem{gunawardena}
 Gunawardena, J.: Chemical Reaction Network Theory for In-silico Biologists.
 \newblock Bauer Center For Genomics Research, Harvard University, Cambridge, MA
