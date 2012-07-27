@@ -6,6 +6,11 @@
   \providecommand{\doi}{DOI~\discretionary{}{}{}\begingroup
   \urlstyle{rm}\Url}\fi
 
+\bibitem{feinberg-entrapped}
+Craciun, G., Feinberg, M.: Multiple equilibria in complex chemical reaction
+  networks: extensions to entrapped species models.
+\newblock Systems Biology (Stevenage) \textbf{153}(1), 179--86 (1988)
+
 \bibitem{Deng}
 Deng, J., Feinberg, M., Jones, C., Nachman, A.: On the steady states of weakly
   reversible chemical reaction networks.

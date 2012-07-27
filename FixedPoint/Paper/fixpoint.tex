@@ -213,8 +213,21 @@ we define the algorithm, evaluate its behavior, and make some final remarks.
 %is the multiplicity of species $i$ in complex $j$.  For example, the
 %multiplicity of the species NaCl in the complex (H$_2$O + 2NaCl) is 2.  
 
-\section{A Model of Chemical Reaction Networks Driven by Mass-Action Kinetics} 
-\label{section:crnt-model}
+\section{A Model of Chemical Reaction Networks Driven by Mass-Action Kinetics}
+\label{section:crnt-model} 
+We model an ensamble of chemical reactions where the the rates of reaction are
+determined by mass-action kinetics.  Our model differs from the continuous flow
+stirred tank reactor (CFSTR) in that the outflow is not expected to be a
+mixture in the same proportions as the reactor's contents. Instead, we allow
+for entrapped species as in \cite{feinberg-entrapped} and furthermore, arbitraty
+outflow rates of any species. The motivation for this choice is the assumption
+that there can be an unknown active mechanism extracting species at a
+particular rate ---for example active transport across a cell membrane---, and an
+experimenter observes both the inflow and outflow rates of the system and wishes to
+determine internal concentrations that would define a steady state with this
+observed material exchange rate. We now proceed to define the model
+mathematically.
+
 A reaction network is represented by a weighted directed graph
 $G(V,E)$, where each node in $V$ represents a complex, each directed edge
 $i\rightarrow j$ denotes a reaction using $i$ to generate $j$, and the
