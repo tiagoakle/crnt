@@ -169,20 +169,21 @@ methods to open systems where species are exchanged across the boundary at certa
 How best to compute such steady states remains uncertain; however, we suggest a fixed
 point algorithm and provide results of our numerical experiments for several cases. 
 
-We build from the work of Flemming et al. \cite{fleming-opt} where the authors
-address the case of ensembles of reversible reactions and propose to find
-thermodynamically feasible mass-conserving fluxes via solving a linearly 
-constrained convex optimization problem. In this work we generalize their 
-work to weakly reversible networks, and propose an alternative version 
-of the algorithm to tackle this case.
- 
+We build on the work of Flemming et al.\ \cite{fleming-opt}, where the authors
+address the case of ensembles of reversible reactions and find
+thermodynamically feasible mass-conserving fluxes by solving a linearly 
+constrained convex optimization problem. We extend this work by tackling the case
+of weakly reversible networks and finding fluxes that are not only mass-conserving
+and thermodynamically feasible but also satisfy mass-action kinetics and 
+are thus steady states of a dynamical system governed by mass-action kinetics.
+
 We wish to highlight the differences between our work and that of Deng et al.\ 
 \cite{Deng}. Their work proves the existence of positive steady states for 
 weakly reversible networks regardless of the number of connected components.
 In this sense their proof is more general. However, we
 also address the case when the rates of material exchange across the system's 
-boundary are prescribed a priori and show that for one linkage class, weakly 
-reversible chemical reaction networks, there exists a positive steady state if
+boundary are prescribed and show that for weakly reversible chemical reaction
+networks with a single linkage class, there exists a positive steady state if
 the exchange rate satisfies a necessary and sufficient condition. Furthermore, we 
 define a practical algorithm to find steady states of the system.
 
@@ -994,12 +995,15 @@ to such a fixed point.
 
 \begin{acknowledgements}
 We gratefully acknowledge Anne Shiu and her student for helpful
-discussions and for directing us to \cite{Deng}.
+discussions and for directing us to \cite{Deng}. 
+We also thank the reviewers for their helpful comments.
 This research was supported in part by the U.S. Department of Energy (Office
 of Advanced Scientific Computing Research and Office of Biological
 and Environmental Research) as part of the Scientific Discovery
-Through Advanced Computing program, grant DE-SC0002009,
-and by NSF grant GOALI 0800151.
+Through Advanced Computing program, grant DE-FG02-09ER25917,
+%DE-SC0002009,
+by NSF grant GOALI 0800151, and by CONACYT (Consejo Nacional de Ciencia
+y Tecnolog\'ia M\'exico).
 \end{acknowledgements}
 
 \frenchspacing
