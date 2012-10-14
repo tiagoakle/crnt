@@ -182,7 +182,7 @@ We wish to highlight the differences between our work and that of Deng et al.\
 weakly reversible networks regardless of the number of connected components.
 In this sense their proof is more general. However, we
 also address the case when the rates of material exchange across the system's 
-boundary are prescribed and show that for weakly reversible chemical reaction
+boundary are prescribed from experimental observations and show that for weakly reversible chemical reaction
 networks with a single linkage class, there exists a positive steady state if
 the exchange rate satisfies a necessary and sufficient condition. Furthermore, we 
 define a practical algorithm to find steady states of the system.
@@ -215,13 +215,14 @@ we define the algorithm, evaluate its behavior, and make some final remarks.
 
 \section{A Model of Chemical Reaction Networks Driven by Mass-Action Kinetics}
 \label{section:crnt-model} 
-We model an ensamble of chemical reactions where the the rates of reaction are
-determined by mass-action kinetics.  Our model differs from the continuous flow
-stirred tank reactor (CFSTR) in that the outflow is not expected to be a
+We model an ensemble of chemical reactions where the the rates of reaction are
+determined by mass-action kinetics. Our model differs from the traditional continuous-flow
+stirred tank reactor (CSTR) in that the outflow is not expected to be a
 mixture in the same proportions as the reactor's contents. Instead, we allow
-for entrapped species as in \cite{feinberg-entrapped} and furthermore, arbitraty
-outflow rates of any species. The motivation for this choice is the assumption
-that there can be an unknown active mechanism extracting species at a
+for entrapped species as in \cite{feinberg-entrapped} and furthermore, arbitrary
+outflow rates of any species. In the traditional sense, this can be viewed as a network of 
+CSTRs in series/parallel with recycle and separation. The motivation for this choice is 
+the assumption that there can be an unknown active mechanism extracting species at a
 particular rate ---for example active transport across a cell membrane---, and an
 experimenter observes both the inflow and outflow rates of the system and wishes to
 determine internal concentrations that would define a steady state with this
@@ -652,7 +653,7 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 	(\tilde{v},\tilde{v}_0) + \hat \alpha z$ has a lower function value than
 	$(v^\star,v^\star_0)$, contradicting its optimality.
 
-	Therefore, by the mean value theorm, there must exist a stationary point of
+	Therefore, by the mean value theorem, there must exist a stationary point of
 	$g$ strictly in the interior of the interval $[l,u]$ at which the function
 	value is smaller than at the boundary.  Moreover, the optimal point will have
 	at least the support of any feasible point.  
@@ -882,7 +883,7 @@ is the desired number of linkage classes.
 
 First, we iteratively generate Erd\H{o}s-R\'{e}yni graphs% 
 \footnote{An Erd\H{o}s-R\'{e}yni graph is a directed unweighted graph. Each
-edge is included with probability $p$ and all edges are sampled \emph{iid}.} % 
+edge is included with probability $p$ and all edges are sampled \emph{i.i.d}.} % 
 with $m$ nodes until we sample a graph with $\ell$ strongly connected
 components; call this graph $\hat G( \hat V, \hat E)$.  We give each edge in 
 $\hat E$ a weight of an independent and uniformly distributed value in the
