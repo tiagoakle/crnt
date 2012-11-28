@@ -219,15 +219,15 @@ We model an ensemble of chemical reactions where the the rates of reaction are
 determined by mass-action kinetics. Our model differs from the traditional continuous-flow
 stirred tank reactor (CSTR) in that the outflow is not expected to be a
 mixture in the same proportions as the reactor's contents. Instead, we allow
-for entrapped species as in \cite{feinberg-entrapped} and furthermore, arbitrary
-outflow rates of any species. In the traditional sense, this can be viewed as a network of 
-CSTRs in series/parallel with recycle and separation. The motivation for this choice is 
-the assumption that there can be an unknown active mechanism extracting species at a
-particular rate ---for example active transport across a cell membrane---, and an
-experimenter observes both the inflow and outflow rates of the system and wishes to
-determine internal concentrations that would define a steady state with this
-observed material exchange rate. We now proceed to define the model
-mathematically.
+for entrapped species as in \cite{feinberg-entrapped} and furthermore,
+arbitrary outflow rates of any species. This model is equivalent to a system
+with a continuous stirred flow tank reactor with recycle and separation.  The
+motivation for this choice is the assumption that there can be an unknown
+active mechanism extracting species at a particular rate ---for example active
+transport across a cell membrane---, and an experimenter observes both the
+inflow and outflow rates of the system and wishes to determine internal
+concentrations that would define a steady state with this observed material
+exchange rate. We now proceed to define the model mathematically.
 
 A reaction network is represented by a weighted directed graph
 $G(V,E)$, where each node in $V$ represents a complex, each directed edge
