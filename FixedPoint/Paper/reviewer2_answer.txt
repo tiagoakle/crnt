@@ -1,0 +1,52 @@
+Comment 1:
+Keywords removed
+
+Comment 2:
+Mathematics subject classification removed
+
+3: Corrected
+
+4: Corrected
+
+5: Originally correct but the notation was confusig, the notation has now been changed.
+
+6: Changed mass-conserving to conservative throughout the paper, and adapted the 
+    description of the vector e to the reviewer's suggestion.
+   We choose to keep the definition of conservative in the mathematical terms presented
+   since it is directly used in several parts of the mathematical analysis.
+
+7: The title now reads weakly reversible networks with a single linkage class. 
+    Removed the incorrect definition and adjusted the language throughout the paper.
+    For example Theorem 2 now reads "For a conservative weakly reversible network with one linkage class" 
+instead of "For a mass conserving single terminal linkage network"  
+
+8:Definition 3 is now Definition 2 and has been changed to reflect the reviewer's suggestion.
+
+9: Corrected
+
+10 - 11: The concept of deficiency is not used anymore and the discussion has been removed.
+
+12: The suggestion to change $R^{n+1}$ to $R^n X R$ was incorporated.
+    y: refers to the dual variable associated to the constraint. The 
+symbol has been removed from the problem definition for clarity.
+    A reference has been added for the 
+origin of the first-order optimality conditions.
+
+13: Corrected
+
+14: TODO
+15: TODO
+16: Corrected
+17: TODO, change the etas for bin and bout?
+18: Corrected, referenced the appropriate theorem
+19: Corrected
+20: Corrected
+21: Corrected
+22: Corrected
+23: Corrected
+24: Corrected
+25: TODO
+26: This is said in the concluding phrase.
+27: Corrected
+28: Corrected
+29: Corrected

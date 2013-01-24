@@ -145,7 +145,6 @@
     %       We report the results of our algorithm on numerical experiments.
         We report numerical experiments.
    \keywords{systems biology networks \and dynamical systems \and fixed point}
-   \subclass{92C42 \and 37N25 \and 65K10}
 \end{abstract}
 
 %\enlargethispage{1\baselineskip}
@@ -440,8 +439,8 @@ the parametric convex optimization problem
 	\end{array}
 	\label{convex-fix}
 \end{equation}
-has a positive solution $(v^\star(\mu),v_0^\star(\mu))$, then the optimality
-conditions
+has a positive solution $(v^\star(\mu),v_0^\star(\mu))$, then the first-order optimality
+conditions \cite{yinyu}
 \begin{subequations}
     \label{opt-cond}
 	\begin{align}
@@ -451,7 +450,9 @@ conditions
     (v^\star(\mu),v_0^\star(\mu)) &\ge 0                              \label{opt-primal-bounds}
 	\end{align}
 \end{subequations}
-are well defined. Since $D$ is nonsingular, \eqref{opt-dual-feas} is
+are well defined. Here $y^\star(\mu)$ is the vector of dual variables
+for the equality constraint.
+Since $D$ is nonsingular, \eqref{opt-dual-feas} is
 equivalent to \eqref{mak-alt} with $c^\star(\mu) := e^{y^\star(\mu)}$, where
 the exponential is evaluated element-wise.  Hence, equation \eqref{mak-alt} holds
 and $c^\star(\mu)$ satisfies mass-action. Note that 
