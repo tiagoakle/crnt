@@ -63,7 +63,7 @@
 
 \newenvironment{opt}{\begin{equation*} \begin{array}{lll}}{\end{array}\end{equation*}}
 
-\title{Existence of positive steady states for mass-conserving and mass-action
+\title{Existence of positive steady states for conservative and mass-action
 	weakly reversible chemical reaction networks with a single linkage class%
    %\thanks{Submitted October 24, 2011 to Journal of Mathematical Biology.}
 }
@@ -128,11 +128,11 @@
 
 
 \begin{abstract}
-	We establish that mass-conserving 
+	We establish that conservative 
     weakly reversible chemical reaction networks formed by a single linkage class
-    admit positive steady states, regardless of network deficiency and choice
+    admit positive steady states, regardless of the choice
     of reaction rate constants. This result holds for closed systems (those
-    without material exchange across the boundary) as well as for open systems 
+    without material exchange across the boundary) as well as for systems 
     with material exchange at rates that satisfy a simple necessary and sufficient
     condition. Our proof uses a convex analysis formulation to define a mapping
     for which a positive fixed point is shown to exist. We then use the existence
@@ -171,9 +171,9 @@ point algorithm and provide results of our numerical experiments for several cas
 
 We build on the work of Fleming et al.\ \cite{fleming-opt}, where the authors
 address the case of ensembles of reversible reactions and find
-thermodynamically feasible mass-conserving fluxes by solving a linearly 
+thermodynamically feasible conservative fluxes by solving a linearly 
 constrained convex optimization problem. We extend this work by tackling the case
-of weakly reversible networks and finding fluxes that are not only mass-conserving
+of weakly reversible networks and finding fluxes that are not only conservative
 and thermodynamically feasible but also satisfy mass-action kinetics and 
 are thus steady states of a dynamical system governed by mass-action kinetics.
 
@@ -229,17 +229,17 @@ inflow and outflow rates of the system and wishes to determine internal
 concentrations that would define a steady state with this observed material
 exchange rate. We now proceed to define the model mathematically.
 
-A reaction network is represented by a weighted directed graph
-$G(V,E)$, where each node in $V$ represents a complex, each directed edge
-$i\rightarrow j$ denotes a reaction using $i$ to generate $j$, and the
-positive edge weight $k_{i\rightarrow j}$ is the reaction rate. The matrix $A
-\in \R^{n \times n}$ is the weighted adjacency matrix of the graph, where
-$A_{ij}=k_{i\rightarrow j}$.  Define $D := \diag(A\1)$, where $\1$ is the
-vector of all ones, and $K := A^T-D$.  The elements of this new matrix will
-be $(K)_{ij} = k_{j \rightarrow i}$ for $i \neq j$, and $(K)_{ii} = -\sum_j
-k_{j \rightarrow i}$, so that $K^T \1 = \0$.  We assume that each complex
-is used in a reaction. Hence $A$ will have no empty rows and $D$ will 
-be a positive-definite diagonal matrix.
+A reaction network is represented by a weighted directed graph $G(V,E)$, where
+each node in $V$ represents a complex, each directed edge $i\rightarrow j$
+denotes a reaction using $i$ to generate $j$, and the positive edge weight
+$k_{i\rightarrow j}$ is the reaction rate. The matrix $A \in \R^{n \times n}$
+is the weighted adjacency matrix of the graph, where $A_{ij}=k_{i\rightarrow
+j}$ and $A_{i,j} =0$ if there is no edge from $i$ to $j$.  Define $D :=
+\diag(A\1)$, where $\1$ is the vector of all ones, and $K := A^T-D$.  The
+elements of this new matrix will be $(K)_{ij} = k_{j \rightarrow i}$ for $i
+\neq j$, and $(K)_{ii} = -\sum_j k_{j \rightarrow i}$, so that $K^T \1 = \0$.
+We assume that each complex is used in a reaction. Hence $A$ will have no empty
+rows and $D$ will be a positive-definite diagonal matrix.
 
 Let $c \in \R^m$ be the vector of concentrations of each species, and $b \in
 \R^m$ the vector of species' exchange rates across the network boundary.
@@ -285,7 +285,7 @@ mass-action condition \eqref{mak}.
 %of mass conservation can be characterized by the following definition. 
 
 \begin{defn}
-	A chemical reaction network is $\emph{mass-conserving}$ if and only if there
+	A chemical reaction network is $\emph{conservative}$ if and only if there
 	exists a positive vector $e\in\R^m$ such that 
 	\begin{align}
 	 e^TYK=0,
@@ -306,8 +306,8 @@ mass-action condition \eqref{mak}.
 %We further restrict our analysis to a class of weakly reversible networks.
 \begin{defn} 
 	A chemical reaction network is \emph{weakly reversible} if for any
-    complex $i$ there exists a directed path in the graph $G$ that loops
-    from $i$ to itself.
+    pair of complexes $i$ and $j$ for which there is a directed path from 
+    $i$ to $j$, there exists a directed path in the reverse direction.
 \end{defn} 
 
 \begin{defn} 
@@ -429,13 +429,13 @@ Also, from Definition \ref{consis}, $e^Tb = 0$ and thus
   e^TYD\eta^- = e^TYA^T\eta^+.
   \label{massbalanceb}
 \end{equation}
-Define $\mu:=(r,r_0) \in \R^{m+1}$ to be a vector parameter.  Observe that if
+Define $\mu:=(r,r_0) \in \R^{m}\times\R$ to be a vector parameter.  Observe that if
 the parametric convex optimization problem
 \begin{equation}
   \tag{P0}
 	\begin{array}{lll}
-  \underset{(v,v_0)\in\R^{n+1}}{\minimize} & v^T D(\log(v)-\1) + v_0(\log v_0 -1) \\
-	\st &  YD v + YA^T\eta^+ v_0 = YA^Tr + YD\eta^-r_0 &:\ y \\
+  \underset{(v,v_0)\in\R^{n}\times\R}{\minimize} & v^T D(\log(v)-\1) + v_0(\log v_0 -1) \\
+	\st &  YD v + YA^T\eta^+ v_0 = YA^Tr + YD\eta^-r_0   \\
 	    &\quad (v,v_0) \ge 0                     
 	\end{array}
 	\label{convex-fix}
@@ -445,7 +445,7 @@ conditions
 \begin{subequations}
     \label{opt-cond}
 	\begin{align}
-      YDv^\star(\mu)  + YA^T\eta^+ v^\star_0  &= YA^Tr + YD\eta^-r_0  \label{opt-primal-feas}\\
+      YDv^\star(\mu)  + YA^T\eta^+ v^\star_0(\mu)  &= YA^Tr + YD\eta^-r_0  \label{opt-primal-feas}\\
       DY^T y^\star(\mu) &= D\log(v^\star(\mu))                        \label{opt-dual-feas}\\
       (YA^T\eta^+)^Ty^\star(\mu)   &= \log(v^\star_0(\mu))            \label{opt-dual-feas-two}\\
     (v^\star(\mu),v_0^\star(\mu)) &\ge 0                              \label{opt-primal-bounds}
@@ -471,7 +471,7 @@ If $\hat \mu = (r, r_0)$ is a fixed point of \eqref{mapping}, then
 \]
 or equivalently
 \[
-    Y K v^\star(\hat \mu) = Y(A^T-D)v^\star(\hat \mu) = v^\star_0(YA^T\eta^+ - 
+    Y K v^\star(\hat \mu) = Y(A^T-D)v^\star(\hat \mu) = v^\star_0(\mu)(YA^T\eta^+ - 
 			YD\eta^-) = v^\star_0(\hat \mu)b.
 \]
 Therefore, if such a fixed point exists, the solution $v^\star(\hat\mu)$ at this
@@ -491,8 +491,8 @@ dependence on $\mu$.
 
 \begin{theorem} 
 	\label{fp-exist-map} 
-	For any mass-conserving, mass-action chemical reaction network and any choice
-	of rate constants $k>0$, there exist nontrivial fixed points for the mapping
+	For any conservative, mass-action chemical reaction network and any choice
+	of rate constants $k>0$, there exist nonzero fixed points for the mapping
 	\eqref{mapping}.
 \end{theorem} 
 
@@ -504,7 +504,7 @@ dependence on $\mu$.
 	Let $(v^\star,v^\star_0)$ be defined as in \eqref{opt-cond} and let $\gamma$
 	be a positive fixed scalar. Define the set 
 	\[
-	\Omega = \left\{ (v,v_0)\in	\Re^{n+1} \; : \; (v,v_0)\geq 0, 
+	\Omega = \left\{ (v,v_0)\in	\Re^{n}\times\R \; : \; (v,v_0)\geq 0, 
 		\quad e^TYDv + e^TYA^T\eta^+v_0 = \gamma\right\},
 	\]  
 	where $e$ is defined in \eqref{consis}.  By Brouwer's fixed-point
@@ -532,7 +532,7 @@ dependence on $\mu$.
 	Therefore, under the mapping $(r,r_0) \rightarrow (v^\star,v_0^\star)$,
 	$(r,r_0) \in \Omega$ implies $(v^\star,v^\star_0) \in \Omega$, and the
 	mapping must have a fixed point.  Moreover, since $\Omega$ does not contain
-	the zero vector, the fixed point(s) are nontrivial.
+	the zero vector, no fixed point is identically zero.
     \qed
 \end{proof}
 
@@ -547,13 +547,14 @@ amount of mass that reacts per unit time at the steady state.  Therefore,
 looking for fixed points in $\Omega$ corresponds to looking for steady states
 where the amount of mass that reacts in the system is prescribed.
 
-We have established the existence of a nontrivial fixed point $\mu$ of the
-mapping $\Omega \ni \mu \rightarrow (v^\star,v^\star_0)\in \Omega$. Moreover,
-we have shown that when the associated minimizer $(v^\star,v^\star_0)$ is
-positive, it is a solution to \eqref{mak} and to
-$YKv^\star=v^\star_0b$.  However, in the case when some entries of $v^\star$
-are zero, the objective function of \eqref{convex-fix} is non-differentiable
-and we cannot use the optimality conditions to show that \eqref{mak} holds. 
+By prooving Theorem \ref{fp-exist-map} we have established the existence of a
+nonzero fixed point $\mu$ of the mapping $\Omega \ni \mu \rightarrow
+(v^\star,v^\star_0)\in \Omega$. Moreover, we have shown that when the
+associated minimizer $(v^\star,v^\star_0)$ is positive, it is a solution to
+\eqref{mak} and to $YKv^\star=v^\star_0b$.  However, in the case when some
+entries of $v^\star$ are zero, the objective function of \eqref{convex-fix} is
+non-differentiable and we cannot use the optimality conditions to show that
+\eqref{mak} holds. 
 
 
 \subsection{Positive fixed points in weakly reversible single linkage networks}  
@@ -571,7 +572,7 @@ linkage class hypothesis to show that at a fixed point, there is a
 positive feasible point.  These two Lemmas imply that at a fixed point
 $\hat{\mu}$, the minimizer will be positive.  Finally, Theorem~\ref{thm:scaling}
 shows that if $\hat{v}_0 \neq 1$ at the solution, we can construct another
-solution for which $\hat{v}_0=1$. This establishes that there is a nontrivial
+solution for which $\hat{v}_0=1$. This establishes that there is a nonzero
 steady state for the network. 
 
 To complete the argument we must prove Lemmas \ref{maximum-support},
@@ -607,23 +608,23 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 	establish that as $\alpha\rightarrow l$ the derivative $g'(\alpha)\rightarrow
 	-\infty$, and as $\alpha\rightarrow u$ the derivative $g'(\alpha)\rightarrow
 	\infty$.  Thus, by the mean value theorem, there must exist a zero of the 
-	function $g$ in the	interior of the interval $[l,u]$.  Since this function is
+	function $g'$ in the	interior of the interval $[l,u]$.  Since this function is
 	strictly convex, if a stationary point exists in the interior of the
 	interval, the function value at the stationary point must be smaller than at
 	the boundary.
 
-	Observe that if we let $d_i$, for $i\in[1,\dots n]$, be the diagonal entries
+	Observe that if we let $d_i$, for $i\in[1,\dots ,n]$, be the diagonal entries
 	of $D$ and $d_{n+1}=1$, we can write 
   \begin{align*}
-	 g(\alpha) &=\sum_{i=1}^{n+1} (\tilde{v} + \alpha z_i) d_i\log(\tilde{v}_i + \alpha z_i).
+	 g(\alpha) &=\sum_{i=1}^{n+1} (\tilde{v_i} + \alpha z_i) d_i\left(\log(\tilde{v}_i + \alpha z_i)-1\right).
   \end{align*} 
 
-	An important observation is that if some entry $\tilde{v}_j=0$ then $z_j=0$,
-	otherwise $v_\alpha$ would have a larger support for some $\alpha \neq 0$.
-	This implies that $(v_\alpha)_j=0$ for all entries where $\tilde{v}_j=0$.  If
-	we let $J$ be the set of nonzero entries of $\tilde{v}$, and $L$ be the
-	subset of $J$ formed by the entries that tend to zero as $\alpha \rightarrow
-	l$, then 
+    An important observation is that if some entry $\tilde{v}_j=0$ then
+    $z_j=0$, otherwise $v_\alpha$ would have a larger support for some $\alpha
+    \neq 0$.  This implies that $(v_\alpha)_j=0$ for all entries where
+    $\tilde{v}_j=0$.  If we let $J$ be the set of indices of the nonzero
+    entries of $\tilde{v}$, and $L$ be the subset of $J$ formed by the indices
+    of the entries that tend to zero as $\alpha \rightarrow l$, then 
    \begin{align*} 
 	 	g'(\alpha) &=\sum_{i\in J} z_i d_i(\log(\tilde{v}_i + \alpha z_i)) \\            
 		&= \sum_{i\in (L^c\cap J)} z_id_i(\log{(\tilde{v_i}+\alpha z_i)}) + \sum_{i\in L}
@@ -633,8 +634,9 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 	Since $z_i>0$ for all $i\in L$, the entries in the logarithm of the second
 	sum tend to zero and the term will diverge to $-\infty$.
 
-	Similarly, let $U$ be the subset of $J$ formed by the entries that tend to zero as 
-	$\alpha\rightarrow u$. Observe that for these entries, $z_i<0$ and
+    Similarly, let $U$ be the subset of $J$ formed by the indices of the
+    entries that tend to zero as $\alpha\rightarrow u$. Observe that for these
+    entries, $z_i<0$ and
   \[
     g'(\alpha) = \sum_{i\in (U^c\cap J)} z_i d_i(\log{(\tilde{v_i}+\alpha z_i)})
                + \sum_{i\in U}   z_i d_i(\log{(\tilde{v_i}+\alpha z_i)}).
@@ -679,8 +681,8 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 
 	First, assume that $\hat{v}_0>0$ and observe that $\rho := (D^{-1}A^T\hat v + \eta^-\hat v_0, 0)$ is 
 	a feasible point. Since $\eta^-$ was chosen to be positive and 
-	$D^{-1}A^T$ has no zero columns, the support of $\rho$ are the first $n$ entries 
-	of the vector. A convex combination of $(\hat v,\hat v_0)$ and $\rho$ will 
+	$D^{-1}A^T$ has no zero columns, the first $n$ entries 
+	of the vector are positive. A convex combination of $(\hat v,\hat v_0)$ and $\rho$ will 
 	be feasible and have full support.
 
 	Now, assume that $\hat v_0 = 0$ and some entry of $\hat v$ is nonzero, and
@@ -698,7 +700,7 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 	
 	This relation can be used inductively to show that there is a feasible point
 	with support at least as large as the union of the supports of
-	$((A^T)^p\hat{v}, 0)$ for all positive powers of $p$.
+	$((A^T)^p\hat{v}, 0)$ for all nonnegative powers $p$.
 
 	The weak reversibility and single linkage class hypotheses imply that for any pair
 	$(i,j)\in [1,\dots,n]\times [1,\dots,n]$, there exists a power $p$ large
@@ -726,7 +728,7 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 \end{proof}
 
 \begin{theorem}\label{thm:scaling}
-	For a mass-conserving weakly reversible network with one linkage class there exists a
+	For a conservative weakly reversible network with one linkage class there exists a
 	concentration $c>0$ such that $YK\psi(c) = b$ if and only if $b$ is in the
 	range of $YK$. 
 \end{theorem}
@@ -746,8 +748,8 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 
 	First, we argue that the vector of all ones, $\1 \in \R^n$, is in the range
 	of $Y^T$ when the network consists of a single linkage class and
-	is mass-conserving. The condition of mass conservation implies that $e^T Y K = 0$, 
-	or equivalently, $Y^T e \in \mathcal{N} (K^T)$.  Since $K^T$ is the 
+	is conservative. The condition of mass conservation implies that $e^T Y K = 0$, 
+	or equivalently, $Y^T e \in \mathcal{N} (K^T)$.  Since $-K^T$ is the 
 	Laplacian matrix of a strongly connected graph, $\mathcal{N}(K) = \{\beta
 	\1 :\; \beta \in \R\}$; thus, for some value $\hat \beta$, $Y^T e = \hat\beta
 	\1$. 
@@ -768,7 +770,7 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 	\] 
 	Therefore, the inhomogeneous system has a solution if the graph of
 	the network is formed by a single linkage class, is weakly reversible
-    and the network is mass-conserving, regardless of the kinetic parameters.
+    and the network is conservative, regardless of the kinetic parameters.
    \qed
 \end{proof}
 
@@ -807,12 +809,12 @@ solving the linearly constrained convex optimization problem
 \eqref{convex-fix}. Our implementation uses PDCO \cite{pdco} to
 solve this problem.
 
-Provided that at each iteration $k$, the unique solution of \eqref{convex-fix}
-satisfies $v^\star(\mu_k)>0$ and the minimization is solved with sufficient
+Provided that at each iteration $t$, the unique solution of \eqref{convex-fix}
+satisfies $v^\star(\mu_t)>0$ and the minimization is solved with sufficient
 accuracy, the optimality conditions for \eqref{convex-fix} will imply that for
-all $k = 1, 2, 3, \dots$,
+all $t = 1, 2, 3, \dots$,
 \[
-	\|Y^Ty^\star-\log(v^\star(\mu_k))\|_\infty \leq \epsilon,
+	\|Y^Ty^\star-\log(v^\star(\mu_t))\|_\infty \leq \epsilon,
 \] 
 for some small value of $\epsilon$, where $y^\star$ is the Lagrange
 multiplier of the linear equality constraint at the solution that corresponds
@@ -875,7 +877,7 @@ in the range of $Y^{T}$.
 
 \subsection{Generating suitable networks}
 
-This section describes the sampling scheme used to generate random mass-conserving
+This section describes the sampling scheme used to generate random conservative
 weakly reversible chemical reaction networks with a prescribed number of
 linkage classes.  The output of the method is a network with $n$
 complexes, $m$ species, and $\ell$ strongly connected components, where $\ell$
@@ -932,7 +934,7 @@ closed networks that are weakly reversible.
 \end{figure}
 
 Figure~\ref{fig:typical-infeas-single} displays the sequence of the
-infeasibilities $\|YKv_k\|_\infty$ at each iteration $k$ in
+infeasibilities $\|YKv_t\|_\infty$ at each iteration $t$ in
 Algorithm~\ref{fp-iteration}, for a network with a single
 linkage class, $50$ species and $500$ complexes, where at
 most $10$ species participate in each
@@ -960,8 +962,8 @@ of the number of linkage classes.
 \end{figure}
 
 Figure~\ref{fig:typical-infeas-single-open} displays
-the sequence of the infeasibilities $\|YK\eta_k-b\eta_0\|_\infty$ 
-at each iteration $k$, for the single linkage network with material 
+the sequence of the infeasibilities $\|YK\eta_t-b\eta_0\|_\infty$ 
+at each iteration $t$, for the single linkage network with material 
 exchange across its boundary. Figure~\ref{fig:typical-infeas-multiple-open} 
 displays the analogous sequence for the multiple linkage network with material
 exchange across its boundary. Notably, the linear convergence rate
