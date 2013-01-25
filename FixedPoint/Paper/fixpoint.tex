@@ -418,6 +418,14 @@ problem such that the logarithmic form of the mass-action equation
 \eqref{mak-alt} is an optimality condition, so that any solution to this
 optimization problem will also satisfy \eqref{mak-alt}.
 
+Before we define the model we must state a couple of inconsequential technical
+assumptions.  First we will assume that each row of $Y$ is non-negative and has
+at least one nonzero entry. This implies that the stoichiometric coefficients
+are positive and each species participates in at least one complex.  Second,
+each column and row of $A$ must have at least one nonzero entry which is
+equivalent to having a network where each complex is produced by at least one
+reaction and consumed by at least one reaction.
+
 We use the existence and uniqueness of the solution of the convex problem 
 to define a mapping as follows: Let $b=YK\eta$ for some $\eta \in \R^n$ and observe
 that for arbitrary $s \in \R^n$ we can write $b = YA^T(\eta +s) - YD(\eta +
@@ -514,11 +522,14 @@ dependence on $\mu$.
     such that the parameter and solution are equal, i.e., there exists a $\mu$ 
     such that $\mu = (r,r_0) = (v^\star(\mu),v_0^\star(\mu))$.  
 
-	The set $\Omega$ is bounded and formed by an intersection of closed convex
-	sets, and hence is convex and compact.  Moreover, the mapping $\mu\rightarrow
-	(v^\star,v^\star_0)$ is continuous. Since problem \eqref{convex-fix} is
-	feasible for any $\mu\in\Omega$, the mapping $\Omega \ni \mu \rightarrow
-	(v^\star,v^\star_0)$ is well defined.
+    The set $\Omega$ is bounded since all elements have non-negative entries and
+    satisfy $(e^TYD, e^TYA^T\eta^+v_0)^T(v,v_0) = \gamma$, and from the assumptions
+    on $Y$ and $K$ it follows that 
+    $(e^TYD,e^TYA^T\eta^+)$ is a vector of positive entries. It is also formed
+    by an intersection of closed convex sets, and hence is convex and compact.
+    Moreover, the mapping $\mu\rightarrow (v^\star,v^\star_0)$ is continuous \cite{dantzig}.
+    Since problem \eqref{convex-fix} is feasible for any $\mu\in\Omega$, the
+    mapping $\Omega \ni \mu \rightarrow (v^\star,v^\star_0)$ is well defined.
 
 	To show that the image of $\Omega$ under the mapping $(r,r_0) \rightarrow
 	(v^\star,v_0^\star)$	is in $\Omega$, first observe that by the bounds in
@@ -537,16 +548,16 @@ dependence on $\mu$.
     \qed
 \end{proof}
 
-Note that the value of $YDv^\star+YA^T\eta^+v^\star_0$ is the rate of
-consumption of each chemical species and $YA^Tv^\star+YD\eta^-v^\star_0$ is the
-rate of production of each chemical species. At the fixed point, the equality
-$YDv^\star + YA^T\eta^+v^\star_0= YA^Tv^\star+YD\eta^-v^\star_0$ defines a
-steady state. The set $\Omega$ defines the parameter $\gamma=e^T(YDv^\star +
-YA^T\eta^+v^\star_0)$, and since the vector $e$ can be interpreted as an assignment
-of relative mass to the species, $\gamma$ can be interpreted as the total
-amount of mass that reacts per unit time at the steady state.  Therefore,
-looking for fixed points in $\Omega$ corresponds to looking for steady states
-where the amount of mass that reacts in the system is prescribed.
+%Note that the value of $YDv^\star+YA^T\eta^+v^\star_0$ is the rate of
+%consumption of each chemical species and $YA^Tv^\star+YD\eta^-v^\star_0$ is the
+%rate of production of each chemical species. At the fixed point, the equality
+%$YDv^\star + YA^T\eta^+v^\star_0= YA^Tv^\star+YD\eta^-v^\star_0$ defines a
+%steady state. The set $\Omega$ defines the parameter $\gamma=e^T(YDv^\star +
+%YA^T\eta^+v^\star_0)$, and since the vector $e$ can be interpreted as an assignment
+%of relative mass to the species, $\gamma$ can be interpreted as the total
+%amount of mass that reacts per unit time at the steady state.  Therefore,
+%looking for fixed points in $\Omega$ corresponds to looking for steady states
+%where the amount of mass that reacts in the system is prescribed.
 
 By prooving Theorem \ref{fp-exist-map} we have established the existence of a
 nonzero fixed point $\mu$ of the mapping $\Omega \ni \mu \rightarrow
@@ -701,14 +712,20 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 	
 	This relation can be used inductively to show that there is a feasible point
 	with support at least as large as the union of the supports of
-	$((A^T)^p\hat{v}, 0)$ for all nonnegative powers $p$.
+	$((A^T)^p\hat{v}, 0)$ for all non-negative powers $p$.
 
-	The weak reversibility and single linkage class hypotheses imply that for any pair
-	$(i,j)\in [1,\dots,n]\times [1,\dots,n]$, there exists a power $p$ large
-	enough such that $(A^T)^p_{ij}>0$.  More importantly, if $\hat v_j > 0$, then
-	there exists a $p$ such that $[(A^T)^p \hat v_j]_i > 0$ for all $i$.  
-	Therefore, if $\hat{v}_0 = 0$ and $\hat{v} \neq 0$, there is a 
-	feasible point $(\tilde{v},0)$ such that $\tilde{v} > 0$.  
+    Powers of adjacency matrices have the property of representing paths of
+    length equal to the power.  If $A$ is an adjacency matrix, row $i$ has nonzero
+    entries in the indices of the nodes reachable in one step from $i$.
+    Row $i$ of matrix $A^2$ has nonzero entries in the indices of the
+    nodes reachable in exactly two steps from $i$/ If the graph is weakly
+    connected and formed by a single linkage class, then all nodes are
+    reachable from all other by multiple step paths, therefore, for any pair
+    $(i,j)\in [1,\dots,n]\times [1,\dots,n]$, there exists a power $p$ large
+    enough such that $(A^T)^p_{ij}>0$.  More importantly, if $\hat v_j > 0$,
+    then there exists a $p$ such that $[(A^T)^p \hat v_j]_i > 0$ for all $i$.
+    Therefore, if $\hat{v}_0 = 0$ and $\hat{v} \neq 0$, there is a feasible
+    point $(\tilde{v},0)$ such that $\tilde{v} > 0$.  
 	
 	Finally, if $\hat v > 0$ then there is a scalar $ 0<\alpha$ mall enough such
 	that 

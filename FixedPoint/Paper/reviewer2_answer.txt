@@ -34,10 +34,10 @@ origin of the first-order optimality conditions.
 
 13: Corrected
 
-14: TODO
-15: TODO
+14: Corrected, the necessary assumptions have been stated.
+15: Added a reference 
 16: Corrected
-17: TODO, change the etas for bin and bout?
+17: Corrected, removed incorrect interpretation of the parameters.
 18: Corrected, referenced the appropriate theorem
 19: Corrected
 20: Corrected
@@ -45,7 +45,7 @@ origin of the first-order optimality conditions.
 22: Corrected
 23: Corrected
 24: Corrected
-25: TODO
+25: Added an explanation of how powers of an adjacency graph, relate to multi edge paths
 26: This is said in the concluding phrase.
 27: Corrected
 28: Corrected
