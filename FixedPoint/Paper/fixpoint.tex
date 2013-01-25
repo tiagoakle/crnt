@@ -419,12 +419,12 @@ problem such that the logarithmic form of the mass-action equation
 optimization problem will also satisfy \eqref{mak-alt}.
 
 Before we define the model we must state a couple of inconsequential technical
-assumptions.  First we will assume that each row of $Y$ is non-negative and has
-at least one nonzero entry. This implies that the stoichiometric coefficients
-are positive and each species participates in at least one complex.  Second,
-each column and row of $A$ must have at least one nonzero entry which is
+assumptions.  First, we assume that each row of $Y$ is non-negative and has
+at least one nonzero entry (which implies that the stoichiometric coefficients
+are positive and each species participates in at least one complex).  Second,
+each column and row of $A$ must have at least one nonzero entry (which is
 equivalent to having a network where each complex is produced by at least one
-reaction and consumed by at least one reaction.
+reaction and consumed by at least one reaction).
 
 We use the existence and uniqueness of the solution of the convex problem 
 to define a mapping as follows: Let $b=YK\eta$ for some $\eta \in \R^n$ and observe
@@ -441,9 +441,9 @@ the parametric convex optimization problem
 \begin{equation}
   \tag{P0}
 	\begin{array}{lll}
-  \underset{(v,v_0)\in\R^{n}\times\R}{\minimize} & v^T D(\log(v)-\1) + v_0(\log v_0 -1) \\
-	\st &  YD v + YA^T\eta^+ v_0 = YA^Tr + YD\eta^-r_0   \\
-	    &\quad (v,v_0) \ge 0                     
+  \underset{(v,v_0)\in\R^{n}\times\R}{\minimize} & v^T D(\log(v)-\1) + v_0(\log v_0 -1) 
+\\ \st &  YD v + YA^T\eta^+ v_0 = YA^Tr + YD\eta^-r_0
+\\	    &\quad (v,v_0) \ge 0                     
 	\end{array}
 	\label{convex-fix}
 \end{equation}
@@ -458,7 +458,7 @@ conditions \cite{yinyu}
     (v^\star(\mu),v_0^\star(\mu)) &\ge 0                              \label{opt-primal-bounds}
 	\end{align}
 \end{subequations}
-are well defined. Here $y^\star(\mu)$ is the vector of dual variables
+are well defined, where $y^\star(\mu)$ is the vector of dual variables
 for the equality constraint.
 Since $D$ is nonsingular, \eqref{opt-dual-feas} is
 equivalent to \eqref{mak-alt} with $c^\star(\mu) := e^{y^\star(\mu)}$, where
@@ -522,7 +522,7 @@ dependence on $\mu$.
     such that the parameter and solution are equal, i.e., there exists a $\mu$ 
     such that $\mu = (r,r_0) = (v^\star(\mu),v_0^\star(\mu))$.  
 
-    The set $\Omega$ is bounded since all elements have non-negative entries and
+    The set $\Omega$ is bounded because all elements have non-negative entries and
     satisfy $(e^TYD, e^TYA^T\eta^+v_0)^T(v,v_0) = \gamma$, and from the assumptions
     on $Y$ and $K$ it follows that 
     $(e^TYD,e^TYA^T\eta^+)$ is a vector of positive entries. It is also formed
@@ -559,7 +559,7 @@ dependence on $\mu$.
 %looking for fixed points in $\Omega$ corresponds to looking for steady states
 %where the amount of mass that reacts in the system is prescribed.
 
-By prooving Theorem \ref{fp-exist-map} we have established the existence of a
+By proving Theorem \ref{fp-exist-map} we have established the existence of a
 nonzero fixed point $\mu$ of the mapping $\Omega \ni \mu \rightarrow
 (v^\star,v^\star_0)\in \Omega$. Moreover, we have shown that when the
 associated minimizer $(v^\star,v^\star_0)$ is positive, it is a solution to
@@ -718,9 +718,9 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
     length equal to the power.  If $A$ is an adjacency matrix, row $i$ has nonzero
     entries in the indices of the nodes reachable in one step from $i$.
     Row $i$ of matrix $A^2$ has nonzero entries in the indices of the
-    nodes reachable in exactly two steps from $i$/ If the graph is weakly
+    nodes reachable in exactly two steps from $i$. If the graph is weakly
     connected and formed by a single linkage class, then all nodes are
-    reachable from all other by multiple step paths, therefore, for any pair
+    reachable from all other by multiple step paths. Therefore, for any pair
     $(i,j)\in [1,\dots,n]\times [1,\dots,n]$, there exists a power $p$ large
     enough such that $(A^T)^p_{ij}>0$.  More importantly, if $\hat v_j > 0$,
     then there exists a $p$ such that $[(A^T)^p \hat v_j]_i > 0$ for all $i$.
