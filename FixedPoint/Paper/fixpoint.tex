@@ -77,7 +77,7 @@
    %         Through Advanced Computing program, grant DE-SC0002009.
    %         Email: {\tt akle@stanford.edu}, {\tt onkar@stanford.edu}, 
    %                {\tt ntaheri@stanford.edu}.}
-   \and Onkar A. Dalal %\footnotemark[2] 
+   \and Onkar A. Dalal%\footnotemark[2] 
    \and Ronan~Fleming%
    %\thanks{Center for Systems Biology, University of
    %Iceland, Sturlugata 8, Reykjavik 101, Iceland. Email: {\tt
@@ -135,8 +135,8 @@
     without material exchange across the boundary) as well as for systems 
     with material exchange at rates that satisfy a simple necessary and sufficient
     condition. Our proof uses a convex analysis formulation to define a mapping
-    for which a positive fixed point is shown to exist. We then use the existence
-    of the fixed point to establish the existence of a positive steady state.
+    for which a positive fixed point exists. We use existence
+    of the fixed point to establish existence of a positive steady state.
 
     The proof inspires the definition of a practical algorithm to find these
     steady states. The same algorithm has been consistently successful
@@ -145,6 +145,7 @@
     %       We report the results of our algorithm on numerical experiments.
         We report numerical experiments.
    \keywords{systems biology networks \and dynamical systems \and fixed point}
+   \subclass{xxx}
 \end{abstract}
 
 %\enlargethispage{1\baselineskip}
@@ -436,26 +437,26 @@ Also, from Definition \ref{consis}, $e^Tb = 0$ and thus
   e^TYD\eta^- = e^TYA^T\eta^+.
   \label{massbalanceb}
 \end{equation}
-Define $\mu:=(r,r_0) \in \R^{m}\times\R$ to be a vector parameter.  Observe that if
+Define $\mu:=(r,\rho) \in \R^{m}\times\R$ to be a vector parameter.  Observe that if
 the parametric convex optimization problem
 \begin{equation}
   \tag{P0}
 	\begin{array}{lll}
-  \underset{(v,v_0)\in\R^{n}\times\R}{\minimize} & v^T D(\log(v)-\1) + v_0(\log v_0 -1) 
-\\ \st &  YD v + YA^T\eta^+ v_0 = YA^Tr + YD\eta^-r_0
-\\	    &\quad (v,v_0) \ge 0                     
+  \underset{(v,\nu)\in\R^{n}\times\R}{\minimize} & v^T D(\log(v)-\1) + \nu(\log \nu -1) 
+\\ \st &  YD v + YA^T\eta^+ \nu = YA^Tr + YD\eta^-\rho
+\\	    &\quad (v,\nu) \ge 0                     
 	\end{array}
 	\label{convex-fix}
 \end{equation}
-has a positive solution $(v^\star(\mu),v_0^\star(\mu))$, then the first-order optimality
+has a positive solution $(v^\star(\mu),\nu^\star(\mu))$, then the first-order optimality
 conditions \cite{yinyu}
 \begin{subequations}
     \label{opt-cond}
 	\begin{align}
-      YDv^\star(\mu)  + YA^T\eta^+ v^\star_0(\mu)  &= YA^Tr + YD\eta^-r_0  \label{opt-primal-feas}\\
+      YDv^\star(\mu)  + YA^T\eta^+ \nu^\star(\mu)  &= YA^Tr + YD\eta^-\rho  \label{opt-primal-feas}\\
       DY^T y^\star(\mu) &= D\log(v^\star(\mu))                        \label{opt-dual-feas}\\
-      (YA^T\eta^+)^Ty^\star(\mu)   &= \log(v^\star_0(\mu))            \label{opt-dual-feas-two}\\
-    (v^\star(\mu),v_0^\star(\mu)) &\ge 0                              \label{opt-primal-bounds}
+      (YA^T\eta^+)^Ty^\star(\mu)   &= \log(\nu^\star(\mu))            \label{opt-dual-feas-two}\\
+    (v^\star(\mu),\nu^\star(\mu)) &\ge 0                              \label{opt-primal-bounds}
 	\end{align}
 \end{subequations}
 are well defined, where $y^\star(\mu)$ is the vector of dual variables
@@ -464,29 +465,29 @@ Since $D$ is nonsingular, \eqref{opt-dual-feas} is
 equivalent to \eqref{mak-alt} with $c^\star(\mu) := e^{y^\star(\mu)}$, where
 the exponential is evaluated element-wise.  Hence, equation \eqref{mak-alt} holds
 and $c^\star(\mu)$ satisfies mass-action. Note that 
-\eqref{convex-fix} is strictly convex, so for any feasible $\mu:=(r,r_0)$ there is 
+\eqref{convex-fix} is strictly convex, so for any feasible $\mu:=(r,\rho)$ there is 
 a unique minimizer. That is, the mapping 
 \begin{equation}
-  \mu=(r,r_0) \rightarrow (v^\star(\mu),v^\star_0(\mu))
+  \mu=(r,\rho) \rightarrow (v^\star(\mu),\nu^\star(\mu))
   \label{mapping}
 \end{equation} 
 is well defined.
 
-If $\hat \mu = (r, r_0)$ is a fixed point of \eqref{mapping}, then
+If $\hat \mu = (r, \rho)$ is a fixed point of \eqref{mapping}, then
 \eqref{opt-primal-feas} implies
 \[
-	 YDv^\star(\hat \mu)+YA^T\eta^+v^\star_0(\hat \mu) = YA^Tv^\star(\hat \mu) +
-	 	YD\eta^-v_0^\star(\hat \mu)
+	 YDv^\star(\hat \mu)+YA^T\eta^+\nu^\star(\hat \mu) = YA^Tv^\star(\hat \mu) +
+	 	YD\eta^-\nu^\star(\hat \mu)
 \]
 or equivalently
 \[
-    Y K v^\star(\hat \mu) = Y(A^T-D)v^\star(\hat \mu) = v^\star_0(\mu)(YA^T\eta^+ - 
-			YD\eta^-) = v^\star_0(\hat \mu)b.
+    Y K v^\star(\hat \mu) = Y(A^T-D)v^\star(\hat \mu) = \nu^\star(\mu)(YA^T\eta^+ - 
+			YD\eta^-) = \nu^\star(\hat \mu)b.
 \]
 Therefore, if such a fixed point exists, the solution $v^\star(\hat\mu)$ at this
 fixed point will satisfy
 \begin{equation}
- YKv^\star=v^\star_0b.
+ YKv^\star=\nu^\star b.
   \label{scaled-fb}
 \end{equation}
 This implies that for $b=0$, both \eqref{fb} and \eqref{mak-alt} are
@@ -494,7 +495,7 @@ satisfied, and $c^\star$ defines a positive steady state of the system.
 For the case where $b\neq 0$, we will show how to construct a 
 corresponding solution so that $\eqref{fb}$ holds.
 
-For simplicity, we henceforth use $(v^\star,v^\star_0)$ and 
+For simplicity, we henceforth use $(v^\star,\nu^\star)$ and 
 $y^\star$ to denote the optimal primal and dual solution, but acknowledge their
 dependence on $\mu$.
 
@@ -510,50 +511,50 @@ dependence on $\mu$.
 	convex and compact subset of a Euclidean space $\Omega$ to itself must have
 	at least one fixed point. 
 
-	Let $(v^\star,v^\star_0)$ be defined as in \eqref{opt-cond} and let $\gamma$
+	Let $(v^\star,\nu^\star)$ be defined as in \eqref{opt-cond} and let $\gamma$
 	be a positive fixed scalar. Define the set 
 	\[
-	\Omega = \left\{ (v,v_0)\in	\Re^{n}\times\R \; : \; (v,v_0)\geq 0, 
-		\quad e^TYDv + e^TYA^T\eta^+v_0 = \gamma\right\},
+	\Omega = \left\{ (v,\nu)\in	\Re^{n}\times\R \; : \; (v,\nu)\geq 0, 
+		\quad e^TYDv + e^TYA^T\eta^+\nu = \gamma\right\},
 	\]  
 	where $e$ is defined in \eqref{consis}.  By Brouwer's fixed-point
-	theorem, if the parameter $(r,r_0) \in \Omega$ ensures that the corresponding 
-    optimal solution $(v^\star,v_0^\star) \in \Omega$, then there is a fixed point 
+	theorem, if the parameter $(r,\rho) \in \Omega$ ensures that the corresponding 
+    optimal solution $(v^\star,\nu^\star) \in \Omega$, then there is a fixed point 
     such that the parameter and solution are equal, i.e., there exists a $\mu$ 
-    such that $\mu = (r,r_0) = (v^\star(\mu),v_0^\star(\mu))$.  
+    such that $\mu = (r,\rho) = (v^\star(\mu),\nu^\star(\mu))$.  
 
     The set $\Omega$ is bounded because all elements have non-negative entries and
-    satisfy $(e^TYD, e^TYA^T\eta^+v_0)^T(v,v_0) = \gamma$, and from the assumptions
+    satisfy $(e^TYD, e^TYA^T\eta^+\nu)^T(v,\nu) = \gamma$, and from the assumptions
     on $Y$ and $K$ it follows that 
     $(e^TYD,e^TYA^T\eta^+)$ is a vector of positive entries. It is also formed
     by an intersection of closed convex sets, and hence is convex and compact.
-    Moreover, the mapping $\mu\rightarrow (v^\star,v^\star_0)$ is continuous \cite{dantzig}.
+    Moreover, the mapping $\mu\rightarrow (v^\star,\nu^\star)$ is continuous \cite{dantzig}.
     Since problem \eqref{convex-fix} is feasible for any $\mu\in\Omega$, the
-    mapping $\Omega \ni \mu \rightarrow (v^\star,v^\star_0)$ is well defined.
+    mapping $\Omega \ni \mu \rightarrow (v^\star,\nu^\star)$ is well defined.
 
-	To show that the image of $\Omega$ under the mapping $(r,r_0) \rightarrow
-	(v^\star,v_0^\star)$	is in $\Omega$, first observe that by the bounds in
-    \eqref{convex-fix}, $(v^\star,v^\star_0) \ge 0$.  Using \eqref{massbalanceb}, 
+	To show that the image of $\Omega$ under the mapping $(r,\rho) \rightarrow
+	(v^\star,\nu^\star)$	is in $\Omega$, first observe that by the bounds in
+    \eqref{convex-fix}, $(v^\star,\nu^\star) \ge 0$.  Using \eqref{massbalanceb}, 
     \eqref{opt-primal-feas} and Definition \ref{consis}
 	we have
 	\begin{align}
-	e^T YD v^\star + e^T YA^T \eta^+ v^\star_0 &= e^T YA^T r + e^T YD \eta^- r_0 \notag 
-	\\ & = e^T YD r + e^T YA^T \eta^+r_0=\gamma, \notag 
+	e^T YD v^\star + e^T YA^T \eta^+ \nu^\star &= e^T YA^T r + e^T YD \eta^- \rho \notag 
+	\\ & = e^T YD r + e^T YA^T \eta^+\rho=\gamma, \notag 
 	\end{align} 
-	and thus $(v^\star,v_0^\star)\in \Omega.$
-	Therefore, under the mapping $(r,r_0) \rightarrow (v^\star,v_0^\star)$,
-	$(r,r_0) \in \Omega$ implies $(v^\star,v^\star_0) \in \Omega$, and the
+	and thus $(v^\star,\nu^\star)\in \Omega.$
+	Therefore, under the mapping $(r,\rho) \rightarrow (v^\star,\nu^\star)$,
+	$(r,\rho) \in \Omega$ implies $(v^\star,\nu^\star) \in \Omega$, and the
 	mapping must have a fixed point.  Moreover, since $\Omega$ does not contain
 	the zero vector, no fixed point is identically zero.
     \qed
 \end{proof}
 
-%Note that the value of $YDv^\star+YA^T\eta^+v^\star_0$ is the rate of
-%consumption of each chemical species and $YA^Tv^\star+YD\eta^-v^\star_0$ is the
+%Note that the value of $YDv^\star+YA^T\eta^+\nu^\star$ is the rate of
+%consumption of each chemical species and $YA^Tv^\star+YD\eta^-\nu^\star$ is the
 %rate of production of each chemical species. At the fixed point, the equality
-%$YDv^\star + YA^T\eta^+v^\star_0= YA^Tv^\star+YD\eta^-v^\star_0$ defines a
+%$YDv^\star + YA^T\eta^+\nu^\star= YA^Tv^\star+YD\eta^-\nu^\star$ defines a
 %steady state. The set $\Omega$ defines the parameter $\gamma=e^T(YDv^\star +
-%YA^T\eta^+v^\star_0)$, and since the vector $e$ can be interpreted as an assignment
+%YA^T\eta^+\nu^\star)$, and since the vector $e$ can be interpreted as an assignment
 %of relative mass to the species, $\gamma$ can be interpreted as the total
 %amount of mass that reacts per unit time at the steady state.  Therefore,
 %looking for fixed points in $\Omega$ corresponds to looking for steady states
@@ -561,9 +562,9 @@ dependence on $\mu$.
 
 By proving Theorem \ref{fp-exist-map} we have established the existence of a
 nonzero fixed point $\mu$ of the mapping $\Omega \ni \mu \rightarrow
-(v^\star,v^\star_0)\in \Omega$. Moreover, we have shown that when the
-associated minimizer $(v^\star,v^\star_0)$ is positive, it is a solution to
-\eqref{mak} and to $YKv^\star=v^\star_0b$.  However, in the case when some
+(v^\star,\nu^\star)\in \Omega$. Moreover, we have shown that when the
+associated minimizer $(v^\star,\nu^\star)$ is positive, it is a solution to
+\eqref{mak} and to $YKv^\star=\nu^\star b$.  However, in the case when some
 entries of $v^\star$ are zero, the objective function of \eqref{convex-fix} is
 non-differentiable and we cannot use the optimality conditions to show that
 \eqref{mak} holds. 
@@ -575,16 +576,16 @@ non-differentiable and we cannot use the optimality conditions to show that
 We now consider the case when the network is weakly reversible and formed by a single
 linkage class and show that if $\hat \mu$ is a fixed point of the
 mapping \eqref{mapping}, the minimizer $(v^\star(\hat
-\mu),v^\star_0(\hat\mu))$, and therefore $\hat\mu$, is positive.
+\mu),\nu^\star(\hat\mu))$, and therefore $\hat\mu$, is positive.
 
 Lemma $\ref{maximum-support}$ below shows that if problem $\eqref{convex-fix}$ has a
-feasible point with support $J$, the minimizer $(v^\star,v^\star_0)$ will have
+feasible point with support $J$, the minimizer $(v^\star,\nu^\star)$ will have
 support at least $J$. Lemma \ref{positive-feasible} uses the single
 linkage class hypothesis to show that at a fixed point, there is a
 positive feasible point.  These two Lemmas imply that at a fixed point
 $\hat{\mu}$, the minimizer will be positive.  Finally, Theorem~\ref{thm:scaling}
-shows that if $\hat{v}_0 \neq 1$ at the solution, we can construct another
-solution for which $\hat{v}_0=1$. This establishes that there is a nonzero
+shows that if $\hat{\nu} \neq 1$ at the solution, we can construct another
+solution for which $\hat{\nu}=1$. This establishes that there is a nonzero
 steady state for the network. 
 
 To complete the argument we must prove Lemmas \ref{maximum-support},
@@ -592,83 +593,83 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 
 \begin{lemma} 
 	The support of any feasible point of problem \eqref{convex-fix} is a subset
-	of the support of the minimizer $(v^\star,v^\star_0)$. 
+	of the support of the minimizer $(v^\star,\nu^\star)$. 
 	\label{maximum-support}
 \end{lemma}
 
 \begin{proof}
-	Let $\tilde{v}\in \Re^{n+1}$ be any of the feasible points with the largest
+	Let $\tilde{v}\in \Re^{n+1}$ be any of the feasible points $(v,\nu)$ with the largest
 	support and let $z$ be any feasible direction at $\tilde{v}$. By
-	construction, for all $\alpha$ in some interval $[\ell,u]$ the points
+	construction, for all $\alpha$ in some interval $[\alpha_1,\alpha_2]$ the points
 	$v_\alpha:= \tilde{v} + \alpha z$ are non-negative and feasible.  The
-	interval can be chosen so that when $\alpha=l$ and when $\alpha=u$, one new
-	bound constraint becomes active.  This implies that $\supp(v_\ell)$ and
-	$\supp(v_u)$ are strictly contained in $\supp(\tilde{v})$, and
-	$\supp(v_\alpha) = \supp(\tilde{v})$ for $\alpha \in (\ell,u)$.
+	interval can be chosen so that when $\alpha=\alpha_1$ and when $\alpha=\alpha_2$, one new
+	bound constraint becomes active.  This implies that $\supp(v_{\alpha_1})$ and
+	$\supp(v_{\alpha_2})$ are strictly contained in $\supp(\tilde{v})$, and
+	$\supp(v_\alpha) = \supp(\tilde{v})$ for $\alpha \in (\alpha_1,\alpha_2)$.
 	
-	Without loss of generality, we assume $\ell<0<u$, since $\ell$ and $u$ will
-	not be of the same sign; if $\ell = 0$ and $u>0$, any point $v_{\alpha}$ can
-	be written as a convex combination of $\tilde{v}$ and $\tilde{v}+uz$, and
+	Without loss of generality we assume $\alpha_1<0<\alpha_2$, since $\alpha_1$ and $\alpha_2$ will
+	not be of the same sign, and if $\alpha_1 = 0$ and $\alpha_2>0$, any point $v_{\alpha}$ can
+	be written as a convex combination of $\tilde{v}$ and $\tilde{v}+\alpha_2z$, and
 	thus has support as large as $\tilde{v}$.
 
 	Define the univariate function 
 	\begin{equation}   
-		g(\alpha) := \phi(\tilde{v} + \alpha z), 
+		\theta(\alpha) := \phi(\tilde{v} + \alpha z), 
 		\label{univariate}
 	\end{equation} 
 	where $\phi$ is the objective function of \eqref{convex-fix}.  We will
-	establish that as $\alpha\rightarrow l$ the derivative $g'(\alpha)\rightarrow
-	-\infty$, and as $\alpha\rightarrow u$ the derivative $g'(\alpha)\rightarrow
+	establish that as $\alpha\rightarrow \alpha_1$ the derivative $\theta'(\alpha)\rightarrow
+	-\infty$, and as $\alpha\rightarrow \alpha_2$ the derivative $\theta'(\alpha)\rightarrow
 	\infty$.  Thus, by the mean value theorem, there must exist a zero of the 
-	function $g'$ in the	interior of the interval $[l,u]$.  Since this function is
+	function $\theta'$ in the interior of the interval $[\alpha_1,\alpha_2]$.
+        Since this function is
 	strictly convex, if a stationary point exists in the interior of the
 	interval, the function value at the stationary point must be smaller than at
 	the boundary.
 
-	Observe that if we let $d_i$, for $i\in[1,\dots ,n]$, be the diagonal entries
-	of $D$ and $d_{n+1}=1$, we can write 
+	If we let $D = \diag(d_i)$ for $i = 1,\dots ,n$ and define
+        $d_{n+1}=1$, we can write 
   \begin{align*}
-	 g(\alpha) &=\sum_{i=1}^{n+1} (\tilde{v_i} + \alpha z_i) d_i\left(\log(\tilde{v}_i + \alpha z_i)-1\right).
+	 \theta(\alpha) &=\sum_{i=1}^{n+1} (\tilde{v_i} + \alpha z_i) d_i\left(\log(\tilde{v}_i + \alpha z_i)-1\right).
   \end{align*} 
-
     An important observation is that if some entry $\tilde{v}_j=0$ then
     $z_j=0$, otherwise $v_\alpha$ would have a larger support for some $\alpha
     \neq 0$.  This implies that $(v_\alpha)_j=0$ for all entries where
     $\tilde{v}_j=0$.  If we let $J$ be the set of indices of the nonzero
     entries of $\tilde{v}$, and $L$ be the subset of $J$ formed by the indices
-    of the entries that tend to zero as $\alpha \rightarrow l$, then 
+    of the entries that tend to zero as $\alpha \rightarrow \alpha_1$, then 
    \begin{align*} 
-	 	g'(\alpha) &=\sum_{i\in J} z_i d_i(\log(\tilde{v}_i + \alpha z_i)) \\            
+	 	\theta'(\alpha) &=\sum_{i\in J} z_i d_i(\log(\tilde{v}_i + \alpha z_i)) \\            
 		&= \sum_{i\in (L^c\cap J)} z_id_i(\log{(\tilde{v_i}+\alpha z_i)}) + \sum_{i\in L}
 		 z_id_i(\log{(\tilde{v_i}+\alpha z_i)}). 
 	\end{align*} 
-	As $\alpha \rightarrow l$, the first summation will approach a finite value.
+	As $\alpha \rightarrow \alpha_1$, the first summation will approach a finite value.
 	Since $z_i>0$ for all $i\in L$, the entries in the logarithm of the second
 	sum tend to zero and the term will diverge to $-\infty$.
 
     Similarly, let $U$ be the subset of $J$ formed by the indices of the
-    entries that tend to zero as $\alpha\rightarrow u$. Observe that for these
+    entries that tend to zero as $\alpha\rightarrow \alpha_2$. Observe that for these
     entries, $z_i<0$ and
   \[
-    g'(\alpha) = \sum_{i\in (U^c\cap J)} z_i d_i(\log{(\tilde{v_i}+\alpha z_i)})
+    \theta'(\alpha) = \sum_{i\in (U^c\cap J)} z_i d_i(\log{(\tilde{v_i}+\alpha z_i)})
                + \sum_{i\in U}   z_i d_i(\log{(\tilde{v_i}+\alpha z_i)}).
   \]
 	The first sum will tend to a finite value and the second will diverge to
 	$\infty$. 
 	
 	Now, assume that for some $\mu$ there is a feasible point
-	$(\tilde{v},\tilde{v_0})$ with larger support than the minimizer
-	$(v^\star,v^\star_0)$ of problem \eqref{convex-fix}.  Since
-	$(v^\star,v_0^\star)$ has smaller support, we can write  $(v^\star,
-	v_0^\star) = (\tilde{v},\tilde{v}_0) + \alpha^\star z$ where $\alpha^\star$
+	$(\tilde{v},\tilde{\nu})$ with larger support than the minimizer
+	$(v^\star,\nu^\star)$ of problem \eqref{convex-fix}.  Since
+	$(v^\star,\nu^\star)$ has smaller support, we can write  $(v^\star,
+	\nu^\star) = (\tilde{v},\tilde{\nu}) + \alpha^\star z$ where $\alpha^\star$
 	is on the boundary of the corresponding feasible interval.  By the
 	previous argument, there is a value of $\hat \alpha \neq \alpha^\star$ in the
-	interior of the interval such that $(v^\star, v_0^\star) =
-	(\tilde{v},\tilde{v}_0) + \hat \alpha z$ has a lower function value than
-	$(v^\star,v^\star_0)$, contradicting its optimality.
+	interior of the interval such that $(v^\star, \nu^\star) =
+	(\tilde{v},\tilde{\nu}) + \hat \alpha z$ has a lower function value than
+	$(v^\star,\nu^\star)$, contradicting its optimality.
 
 	Therefore, by the mean value theorem, there must exist a stationary point of
-	$g$ strictly in the interior of the interval $[l,u]$ at which the function
+	$\theta$ strictly in the interior of the interval $[\alpha_1,\alpha_2]$ at which the function
 	value is smaller than at the boundary.  Moreover, the optimal point will have
 	at least the support of any feasible point.  
    \qed
@@ -679,29 +680,29 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 \begin{lemma}
 	If the network is weakly reversible and formed by a single linkage class, when problem
 	\eqref{convex-fix} is parametrized by a fixed point $\hat\mu$,  there
-	exists a positive feasible point $(\hat v,\hat v_0)$.
+	exists a positive feasible point $(\hat v,\hat \nu)$.
 \label{positive-feasible}
 \end{lemma}
 
 \begin{proof}
 	Let problem \eqref{convex-fix} be parametrized with a fixed point $\hat\mu$,
-	and let $(\hat v, \hat v_0)$ be both the minimizer and the fixed point.  We
-	prove by contradiction that no entry of the minimizer $(\hat{v},\hat{v}_0)$
+	and let $(\hat v, \hat \nu)$ be both the minimizer and the fixed point.  We
+	prove by contradiction that no entry of the minimizer $(\hat{v},\hat{\nu})$
 	can be zero. Observe that by the definition of $\Omega$ the origin is not
 	contained in the set, and therefore the fixed point cannot be identically
 	zero. 
 
-	First, assume that $\hat{v}_0>0$ and observe that $\rho := (D^{-1}A^T\hat v + \eta^-\hat v_0, 0)$ is 
+	First, assume that $\hat{\nu}>0$ and observe that $p := (D^{-1}A^T\hat v + \eta^-\hat \nu, 0)$ is 
 	a feasible point. Since $\eta^-$ was chosen to be positive and 
 	$D^{-1}A^T$ has no zero columns, the first $n$ entries 
-	of the vector are positive. A convex combination of $(\hat v,\hat v_0)$ and $\rho$ will 
+	of the vector are positive. A convex combination of $(\hat v,\hat \nu)$ and $p$ will 
 	be feasible and have full support.
 
-	Now, assume that $\hat v_0 = 0$ and some entry of $\hat v$ is nonzero, and
+	Now, assume that $\hat \nu = 0$ and some entry of $\hat v$ is nonzero, and
 	observe that $(D^{-1}A^T\hat{v},0)$ is feasible. A convex combination of
 	$(D^{-1}A^T\hat{v},0)$ and $(\hat{v},0)$ is feasible and its support
 	contains the union of the supports of the two vectors.  That is, for $\beta \in
-	[0,1]$ the point  $(\tilde{v}, \tilde{v}_0) = \beta (D^{-1}A^T\hat{v},0) +
+	[0,1]$ the point  $(\tilde{v}, \tilde{\nu}) = \beta (D^{-1}A^T\hat{v},0) +
 	(1-\beta)(\hat{v},0)$ is feasible, and using the fact that the support of
 	$D^{-1}A^T\hat v$ is the support of $A^T	\hat v$ along with Lemma
 	\ref{maximum-support},
@@ -724,7 +725,7 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
     $(i,j)\in [1,\dots,n]\times [1,\dots,n]$, there exists a power $p$ large
     enough such that $(A^T)^p_{ij}>0$.  More importantly, if $\hat v_j > 0$,
     then there exists a $p$ such that $[(A^T)^p \hat v_j]_i > 0$ for all $i$.
-    Therefore, if $\hat{v}_0 = 0$ and $\hat{v} \neq 0$, there is a feasible
+    Therefore, if $\hat{\nu} = 0$ and $\hat{v} \neq 0$, there is a feasible
     point $(\tilde{v},0)$ such that $\tilde{v} > 0$.  
 	
 	Finally, if $\hat v > 0$ then there is a scalar $ 0<\alpha$ mall enough such
@@ -741,7 +742,7 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 
 	Therefore, if a network is weakly reversible and formed by a single linkage class, the
 	problem \eqref{convex-fix} has a positive feasible point $(\hat v, \hat
-	v_0)$.  
+	\nu)$.  
    \qed
 \end{proof}
 
@@ -753,7 +754,7 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 
 \begin{proof}
 	We have shown that there exist positive vectors $c \in \R^m, v \in \R^n$ such
-	that $Y^T \log(c) = \log (v)$ and $Y K v = v_0 b$.  In other words, we have
+	that $Y^T \log(c) = \log (v)$ and $Y K v = \nu b$.  In other words, we have
 	proven that there is a positive vector $c$ and a positive scalar $\alpha$
 	such that $Y K \psi(c) = \alpha b$.  If we can construct a new
 	concentration vector $\tilde c > 0$ that satisfies $\psi(\tilde c) =
@@ -802,21 +803,21 @@ boundary.
 
 \subsection{Numerical method for finding fixed points}
 
-Given an initial positive point $(\hat v, \hat v_0) \in \R^{n+1}$ and a small
+Given an initial positive point $(\hat v, \hat \nu) \in \R^{n+1}$ and a small
 tolerance $\tau$, we use the following fixed point iteration,
-Algorithm~\ref{fp-iteration}, to find a parameter $\mu = (r, r_0)$ to
-the problem \eqref{convex-fix} such that $(v^\star,v_0^\star) =
-(r,r_0)$.
+Algorithm~\ref{fp-iteration}, to find a parameter $\mu = (r, \rho)$ to
+the problem \eqref{convex-fix} such that $(v^\star,\nu^\star) =
+(r,\rho)$.
 
 \begin{algorithm}
 \caption{Fixed point iteration to find a steady-state concentration}
 \label{fp-iteration}
 \begin{algorithmic}[1]
-  \STATE $(r,r_0) \gets (\hat v,\hat v_0)$
-  \WHILE{$\|YK v^\star - (Y K \eta^+ + YD \eta^-) v_0^\star \|_\infty>\tau$}
-  \STATE $(v^\star,v^\star_0)\gets \text{unique solution of \eqref{convex-fix}} $
+  \STATE $(r,\rho) \gets (\hat v,\hat \nu)$
+  \WHILE{$\|YK v^\star - (Y K \eta^+ + YD \eta^-) \nu^\star \|_\infty>\tau$}
+  \STATE $(v^\star,\nu^\star)\gets \text{unique solution of \eqref{convex-fix}} $
 		\label{min-step}
-	\STATE $(r,r_0) \gets \frac{1}{2}(r,r_0) +\frac{1}{2}(v^\star,v^\star_0)$
+	\STATE $(r,\rho) \gets \frac{1}{2}(r,\rho) +\frac{1}{2}(v^\star,\nu^\star)$
   \ENDWHILE
   \label{fixpoint-alg}.
 \end{algorithmic}
@@ -837,7 +838,7 @@ all $t = 1, 2, 3, \dots$,
 for some small value of $\epsilon$, where $y^\star$ is the Lagrange
 multiplier of the linear equality constraint at the solution that corresponds
 to the logarithm of the concentrations. Thus, if the iteration
-converges to a fixed point $(r,r_0) = (v^\star,v_0^\star)$, then
+converges to a fixed point $(r,\rho) = (v^\star,\nu^\star)$, then
 \eqref{mak} will be satisfied to precision $\epsilon$ and \eqref{fb}
 to precision $\tau$.
 
@@ -879,7 +880,7 @@ the convergence of the fixed point iterations to the steady state.
 
 Figure~\ref{EquilibriumVsTotalMass} illustrates the change in steady state as a
 function of the \emph{total mass} in the system, where total mass is defined as
-$\gamma = e^T(YD v^\star + YA^T \eta^+ v^\star_0)$, as described in
+$\gamma = e^T(YD v^\star + YA^T \eta^+ \nu^\star)$, as described in
 Theorem~\ref{fp-exist-map}.  The experiment shows that as the total mass increases,
 species $A$, $B$ and $C$ adjust linearly to the additional mass, while species
 $D$ and $E$ stay at the same levels.  This linear growth in species $A, B$ and
