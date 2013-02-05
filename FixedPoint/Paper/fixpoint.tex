@@ -61,6 +61,9 @@
 \renewcommand{\P}{\ensuremath{\operatorname{P}}}
 \renewcommand{\Pr}[2][]{\ensuremath{\P_{#1} \left \{ #2 \right \}}}
 
+\newcommand{\ab}{a}   % b = YKa,  where a = \ab
+
+
 \newenvironment{opt}{\begin{equation*} \begin{array}{lll}}{\end{array}\end{equation*}}
 
 \title{Existence of positive steady states for conservative and mass-action
@@ -428,13 +431,13 @@ equivalent to having a network where each complex is produced by at least one
 reaction and consumed by at least one reaction).
 
 We use the existence and uniqueness of the solution of the convex problem 
-to define a mapping as follows: Let $b=YK\eta$ for some $\eta \in \R^n$ and observe
-that for arbitrary $s \in \R^n$ we can write $b = YA^T(\eta +s) - YD(\eta +
+to define a mapping as follows: Let $b=YK\ab$ for some $\ab \in \R^n$ and observe
+that for arbitrary $s \in \R^n$ we can write $b = YA^T(\ab +s) - YD(\ab +
 D^{-1}A^Ts)$.  In particular, we choose $s$ positive and large enough so
-that $\eta^+ := \eta+s$ and $\eta^- := \eta + D^{-1}A^Ts$ are both positive.
+that $\ab^+ := \ab+s$ and $\ab^- := \ab + D^{-1}A^Ts$ are both positive.
 Also, from Definition \ref{consis}, $e^Tb = 0$ and thus
 \begin{equation}
-  e^TYD\eta^- = e^TYA^T\eta^+.
+  e^TYD\ab^- = e^TYA^T\ab^+.
   \label{massbalanceb}
 \end{equation}
 Define $\mu:=(r,\rho) \in \R^{m}\times\R$ to be a vector parameter.  Observe that if
@@ -443,7 +446,7 @@ the parametric convex optimization problem
   \tag{P0}
 	\begin{array}{lll}
   \underset{(v,\nu)\in\R^{n}\times\R}{\minimize} & v^T D(\log(v)-\1) + \nu(\log \nu -1) 
-\\ \st &  YD v + YA^T\eta^+ \nu = YA^Tr + YD\eta^-\rho
+\\ \st &  YD v + YA^T\ab^+ \nu = YA^Tr + YD\ab^-\rho
 \\	    &\quad (v,\nu) \ge 0                     
 	\end{array}
 	\label{convex-fix}
@@ -453,9 +456,9 @@ conditions \cite{yinyu}
 \begin{subequations}
     \label{opt-cond}
 	\begin{align}
-      YDv^\star(\mu)  + YA^T\eta^+ \nu^\star(\mu)  &= YA^Tr + YD\eta^-\rho  \label{opt-primal-feas}\\
+      YDv^\star(\mu)  + YA^T\ab^+ \nu^\star(\mu)  &= YA^Tr + YD\ab^-\rho  \label{opt-primal-feas}\\
       DY^T y^\star(\mu) &= D\log(v^\star(\mu))                        \label{opt-dual-feas}\\
-      (YA^T\eta^+)^Ty^\star(\mu)   &= \log(\nu^\star(\mu))            \label{opt-dual-feas-two}\\
+      (YA^T\ab^+)^Ty^\star(\mu)   &= \log(\nu^\star(\mu))            \label{opt-dual-feas-two}\\
     (v^\star(\mu),\nu^\star(\mu)) &\ge 0                              \label{opt-primal-bounds}
 	\end{align}
 \end{subequations}
@@ -476,13 +479,13 @@ is well defined.
 If $\hat \mu = (r, \rho)$ is a fixed point of \eqref{mapping}, then
 \eqref{opt-primal-feas} implies
 \[
-	 YDv^\star(\hat \mu)+YA^T\eta^+\nu^\star(\hat \mu) = YA^Tv^\star(\hat \mu) +
-	 	YD\eta^-\nu^\star(\hat \mu)
+	 YDv^\star(\hat \mu)+YA^T\ab^+\nu^\star(\hat \mu) = YA^Tv^\star(\hat \mu) +
+	 	YD\ab^-\nu^\star(\hat \mu)
 \]
 or equivalently
 \[
-    Y K v^\star(\hat \mu) = Y(A^T-D)v^\star(\hat \mu) = \nu^\star(\mu)(YA^T\eta^+ - 
-			YD\eta^-) = \nu^\star(\hat \mu)b.
+    Y K v^\star(\hat \mu) = Y(A^T-D)v^\star(\hat \mu) = \nu^\star(\mu)(YA^T\ab^+ - 
+			YD\ab^-) = \nu^\star(\hat \mu)b.
 \]
 Therefore, if such a fixed point exists, the solution $v^\star(\hat\mu)$ at this
 fixed point will satisfy
@@ -515,7 +518,7 @@ dependence on $\mu$.
 	be a positive fixed scalar. Define the set 
 	\[
 	\Omega = \left\{ (v,\nu)\in	\Re^{n}\times\R \; : \; (v,\nu)\geq 0, 
-		\quad e^TYDv + e^TYA^T\eta^+\nu = \gamma\right\},
+		\quad e^TYDv + e^TYA^T\ab^+\nu = \gamma\right\},
 	\]  
 	where $e$ is defined in \eqref{consis}.  By Brouwer's fixed-point
 	theorem, if the parameter $(r,\rho) \in \Omega$ ensures that the corresponding 
@@ -524,9 +527,9 @@ dependence on $\mu$.
     such that $\mu = (r,\rho) = (v^\star(\mu),\nu^\star(\mu))$.  
 
     The set $\Omega$ is bounded because all elements have non-negative entries and
-    satisfy $(e^TYD, e^TYA^T\eta^+\nu)^T(v,\nu) = \gamma$, and from the assumptions
+    satisfy $(e^TYD, e^TYA^T\ab^+\nu)^T(v,\nu) = \gamma$, and from the assumptions
     on $Y$ and $K$ it follows that 
-    $(e^TYD,e^TYA^T\eta^+)$ is a vector of positive entries. It is also formed
+    $(e^TYD,e^TYA^T\ab^+)$ is a vector of positive entries. It is also formed
     by an intersection of closed convex sets, and hence is convex and compact.
     Moreover, the mapping $\mu\rightarrow (v^\star,\nu^\star)$ is continuous \cite{dantzig}.
     Since problem \eqref{convex-fix} is feasible for any $\mu\in\Omega$, the
@@ -538,8 +541,8 @@ dependence on $\mu$.
     \eqref{opt-primal-feas} and Definition \ref{consis}
 	we have
 	\begin{align}
-	e^T YD v^\star + e^T YA^T \eta^+ \nu^\star &= e^T YA^T r + e^T YD \eta^- \rho \notag 
-	\\ & = e^T YD r + e^T YA^T \eta^+\rho=\gamma, \notag 
+	e^T YD v^\star + e^T YA^T \ab^+ \nu^\star &= e^T YA^T r + e^T YD \ab^- \rho \notag 
+	\\ & = e^T YD r + e^T YA^T \ab^+\rho=\gamma, \notag 
 	\end{align} 
 	and thus $(v^\star,\nu^\star)\in \Omega.$
 	Therefore, under the mapping $(r,\rho) \rightarrow (v^\star,\nu^\star)$,
@@ -549,12 +552,12 @@ dependence on $\mu$.
     \qed
 \end{proof}
 
-%Note that the value of $YDv^\star+YA^T\eta^+\nu^\star$ is the rate of
-%consumption of each chemical species and $YA^Tv^\star+YD\eta^-\nu^\star$ is the
+%Note that the value of $YDv^\star+YA^T\ab^+\nu^\star$ is the rate of
+%consumption of each chemical species and $YA^Tv^\star+YD\ab^-\nu^\star$ is the
 %rate of production of each chemical species. At the fixed point, the equality
-%$YDv^\star + YA^T\eta^+\nu^\star= YA^Tv^\star+YD\eta^-\nu^\star$ defines a
+%$YDv^\star + YA^T\ab^+\nu^\star= YA^Tv^\star+YD\ab^-\nu^\star$ defines a
 %steady state. The set $\Omega$ defines the parameter $\gamma=e^T(YDv^\star +
-%YA^T\eta^+\nu^\star)$, and since the vector $e$ can be interpreted as an assignment
+%YA^T\ab^+\nu^\star)$, and since the vector $e$ can be interpreted as an assignment
 %of relative mass to the species, $\gamma$ can be interpreted as the total
 %amount of mass that reacts per unit time at the steady state.  Therefore,
 %looking for fixed points in $\Omega$ corresponds to looking for steady states
@@ -692,8 +695,8 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 	contained in the set, and therefore the fixed point cannot be identically
 	zero. 
 
-	First, assume that $\hat{\nu}>0$ and observe that $p := (D^{-1}A^T\hat v + \eta^-\hat \nu, 0)$ is 
-	a feasible point. Since $\eta^-$ was chosen to be positive and 
+	First, assume that $\hat{\nu}>0$ and observe that $p := (D^{-1}A^T\hat v + \ab^-\hat \nu, 0)$ is 
+	a feasible point. Since $\ab^-$ was chosen to be positive and 
 	$D^{-1}A^T$ has no zero columns, the first $n$ entries 
 	of the vector are positive. A convex combination of $(\hat v,\hat \nu)$ and $p$ will 
 	be feasible and have full support.
@@ -731,13 +734,13 @@ To complete the argument we must prove Lemmas \ref{maximum-support},
 	Finally, if $\hat v > 0$ then there is a scalar $ 0<\alpha$ mall enough such
 	that 
 	\[
-	0< \hat v - D^{-1}A^T\eta^+ \alpha,
+	0< \hat v - D^{-1}A^T\ab^+ \alpha,
 	\]
 	and then the equality  
 	\[
-		YD(\hat v - D^{-1}A^T\eta^+\alpha)+YA^T\eta^+\alpha = YD\hat v = YA^T\hat v
+		YD(\hat v - D^{-1}A^T\ab^+\alpha)+YA^T\ab^+\alpha = YD\hat v = YA^T\hat v
 	\]
-	implies that the positive point $(\hat v - D^{-1}A^T\eta^+\alpha,\alpha)$ is
+	implies that the positive point $(\hat v - D^{-1}A^T\ab^+\alpha,\alpha)$ is
 	feasible.
 
 	Therefore, if a network is weakly reversible and formed by a single linkage class, the
@@ -814,7 +817,7 @@ the problem \eqref{convex-fix} such that $(v^\star,\nu^\star) =
 \label{fp-iteration}
 \begin{algorithmic}[1]
   \STATE $(r,\rho) \gets (\hat v,\hat \nu)$
-  \WHILE{$\|YK v^\star - (Y K \eta^+ + YD \eta^-) \nu^\star \|_\infty>\tau$}
+  \WHILE{$\|YK v^\star - b \nu^\star \|_\infty>\tau$}
   \STATE $(v^\star,\nu^\star)\gets \text{unique solution of \eqref{convex-fix}} $
 		\label{min-step}
 	\STATE $(r,\rho) \gets \frac{1}{2}(r,\rho) +\frac{1}{2}(v^\star,\nu^\star)$
@@ -880,7 +883,7 @@ the convergence of the fixed point iterations to the steady state.
 
 Figure~\ref{EquilibriumVsTotalMass} illustrates the change in steady state as a
 function of the \emph{total mass} in the system, where total mass is defined as
-$\gamma = e^T(YD v^\star + YA^T \eta^+ \nu^\star)$, as described in
+$\gamma = e^T(YD v^\star + YA^T \ab^+ \nu^\star)$, as described in
 Theorem~\ref{fp-exist-map}.  The experiment shows that as the total mass increases,
 species $A$, $B$ and $C$ adjust linearly to the additional mass, while species
 $D$ and $E$ stay at the same levels.  This linear growth in species $A, B$ and
@@ -927,7 +930,7 @@ This section illustrates the convergence of Algorithm~\ref{fp-iteration} on
 large weakly reversible networks that consist of either a single linkage class 
 or multiple linkage classes, for cases where there is no material exchange
 across the boundary ($b=0$) and cases where there is material exchange
-across the boundary ($b=YK\eta$ for some $\eta \neq 0$).
+across the boundary ($b=YK\ab$ for some $\ab \neq 0$).
 
 Algorithm~\ref{fp-iteration} produces sequences that, up to a small tolerance,
 satisfy \eqref{mak} at every iteration. Ideally, the infeasibility with 
@@ -981,7 +984,7 @@ of the number of linkage classes.
 \end{figure}
 
 Figure~\ref{fig:typical-infeas-single-open} displays
-the sequence of the infeasibilities $\|YK\eta_t-b\eta_0\|_\infty$ 
+the sequence of the infeasibilities $\norm{YKv_t-b \nu_t}_\infty$ 
 at each iteration $t$, for the single linkage network with material 
 exchange across its boundary. Figure~\ref{fig:typical-infeas-multiple-open} 
 displays the analogous sequence for the multiple linkage network with material
