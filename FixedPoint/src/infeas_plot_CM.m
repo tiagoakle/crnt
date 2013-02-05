@@ -41,8 +41,8 @@ fprintf('Final Mass Balance infeasibility %d\n Final Mass Action Infeasibility %
 h = semilogy(1:iter, mass_infeas(1:iter),'b.-');
 title('Mass balance infeasibility vs iteration count for multiple linkage network')
 xlabel('Iteration')
-ylabel('log ||YA_k\eta||_\infty')
-saveas(h,'InfeasibilityVsIterationMultiple.eps','eps')
+ylabel('log ||YA_k v||_\infty')
+saveas(h,'InfeasibilityVsIterationMultiple.pdf','pdf')
 
 
 
